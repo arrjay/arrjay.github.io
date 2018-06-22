@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Howto  &middot; cloud daydreams</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://arrjay.github.io/tags/howto/">
+  
+  <link href="https://arrjay.github.io/tags/howto/index.xml" rel="alternate" type="application/rss+xml" title="Howto" />
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="/" class="logo-title">INDEX</a></li>
+      <li><a href="/categories">CATEGORIES</a></li>
+      <li><a href="/tags">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="/">
+        <img src="/images/logo.png" width="260px" height="48px" />
+      </a>
+    </div>
+
+
+
+  <a href="https://arrjay.github.io/posts/irix62-install/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>07 Apr 2014, 00:53</time>
+      <h1>IRIX 6.2 Installation and patching</h1>
+    </div>
+  </div>
+</a>
+<div class="summary-content">
+  do the install, reboot  install default is the magic for inst selection.  DHCP will give you back an address, but you need to configure DNS. routed(!) will hand you a default route.  echo 'nameserver 10.100.252.2' &gt; /etc/resolv.conf echo 'domain j.hack' &gt;&gt; /etc/resolv.conf echo 'hostname' &gt; /etc/sys_id cat /etc/hosts|sed s/IRIS/xxxHOSTNAMExxx/g &gt; /etc/hosts.1 mv /etc/hosts.1 /etc/hosts   you can verify with ping - there is no host or getent here!
+  
+  <a href="/posts/irix62-install/" class="summary-more">READ MORE</a>
+  
+</div>
+  <hr class="summary-sep" />
+
+
+<div class="paging">
+  
+  <a href="/tags/howto/page/2/" rel="prev">
+    <i class="fa fa-caret-left" aria-hidden="true"></i>
+  </a>
+  
+  PAGE 3 / 3
+  
+</div>
+
+<footer class="footer">
+  Copyright (C) RJ Bergeron, All Rights Reserved.<br>
+  Theme by <a href="https://blog.lulab.net">DONGGEUN,BANG</a>
+</footer>
+
+</body>
+</html>
+

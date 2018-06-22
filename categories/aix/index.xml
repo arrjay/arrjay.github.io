@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aix on cloud daydreams</title>
+    <link>https://arrjay.github.io/categories/aix/</link>
+    <description>Recent content in Aix on cloud daydreams</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
+    <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
+    <lastBuildDate>Fri, 04 Jul 2014 18:01:45 -0400</lastBuildDate>
+    
+	<atom:link href="https://arrjay.github.io/categories/aix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IBM 7043 140 (43p)</title>
+      <link>https://arrjay.github.io/posts/ibm-7043-140/</link>
+      <pubDate>Fri, 04 Jul 2014 18:01:45 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/ibm-7043-140/</guid>
+      <description>Booting misc things on the IBM 7043-140 This machine is also known as the rs/6000 43p model 140, and finding documentation on it is scarce at best.
+Firmware Access Firmware can take it&amp;rsquo;s time to gather clues and actually start an interface.
+If booting from serial port (9600 8n1), system will begin firmware init by writing a series of &amp;ldquo;RS/6000&amp;rdquo;, then &amp;lsquo;memory&amp;rsquo;, &amp;lsquo;keyboard&amp;rsquo;, &amp;lsquo;network&amp;rsquo;, &amp;lsquo;scsi&amp;rsquo;, &amp;lsquo;speaker&amp;rsquo;. There are several keys you can press to enter diagnostic utilities immediately after &amp;lsquo;keyboard&amp;rsquo; displays.</description>
+    </item>
+    
+  </channel>
+</rss>

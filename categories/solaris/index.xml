@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Solaris on cloud daydreams</title>
+    <link>https://arrjay.github.io/categories/solaris/</link>
+    <description>Recent content in Solaris on cloud daydreams</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
+    <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
+    <lastBuildDate>Mon, 07 Apr 2014 00:54:11 -0400</lastBuildDate>
+    
+	<atom:link href="https://arrjay.github.io/categories/solaris/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing Solaris 8 on a tiny machine (sparcstation LX)</title>
+      <link>https://arrjay.github.io/posts/tiny-solaris/</link>
+      <pubDate>Mon, 07 Apr 2014 00:54:11 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/tiny-solaris/</guid>
+      <description>If the installer drops to a # prompt complaining about bpgetfile - don&amp;rsquo;t worry, just type exit - you&amp;rsquo;re doing an interactive install anyway.
+At some point the installer will look at the amount of RAM in the box (64MB baby!) and stop. So we need to configure a disk, and swap now, then continue the installation.
+ run &amp;lsquo;format&amp;rsquo; to see the disks attached to the machine - you probably want disk 0, type 0 at the prompt.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Irix on cloud daydreams</title>
+    <link>https://arrjay.github.io/categories/irix/</link>
+    <description>Recent content in Irix on cloud daydreams</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
+    <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
+    <lastBuildDate>Mon, 07 Apr 2014 00:53:39 -0400</lastBuildDate>
+    
+	<atom:link href="https://arrjay.github.io/categories/irix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IRIX 6.2 Installation and patching</title>
+      <link>https://arrjay.github.io/posts/irix62-install/</link>
+      <pubDate>Mon, 07 Apr 2014 00:53:39 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/irix62-install/</guid>
+      <description>do the install, reboot  install default is the magic for inst selection.  DHCP will give you back an address, but you need to configure DNS. routed(!) will hand you a default route.  echo &#39;nameserver 10.100.252.2&#39; &amp;gt; /etc/resolv.conf echo &#39;domain j.hack&#39; &amp;gt;&amp;gt; /etc/resolv.conf echo &#39;hostname&#39; &amp;gt; /etc/sys_id cat /etc/hosts|sed s/IRIS/xxxHOSTNAMExxx/g &amp;gt; /etc/hosts.1 mv /etc/hosts.1 /etc/hosts   you can verify with ping - there is no host or getent here!</description>
+    </item>
+    
+  </channel>
+</rss>

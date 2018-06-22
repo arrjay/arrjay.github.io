@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Esx on cloud daydreams</title>
+    <link>https://arrjay.github.io/categories/esx/</link>
+    <description>Recent content in Esx on cloud daydreams</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
+    <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
+    <lastBuildDate>Thu, 10 Jul 2014 23:31:42 -0400</lastBuildDate>
+    
+	<atom:link href="https://arrjay.github.io/categories/esx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Copper (Darwin 8.0.1)</title>
+      <link>https://arrjay.github.io/posts/copper/</link>
+      <pubDate>Thu, 10 Jul 2014 23:31:42 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/copper/</guid>
+      <description>Installing Darwin 8.0.1 as a VM Copper is an installation of Darwin 8.0.1. Installing Darwin is&amp;hellip;finicky.
+Avoid installing to ufs, that seems to work very poorly.
+ESXi configuration  Virtual Machine - version 8 Hardware Hard disk 1 should be attached to IDE bus (0:0) 768MB of RAM seems to be plenty. E1000 ethernet adapter works here as well. For Guest OS I selected Other (FreeBSD (32-bit)) Once up and running, you probably want to tweak settings to always boot from CD first - simply disconnect from image when we&amp;rsquo;re done.</description>
+    </item>
+    
+  </channel>
+</rss>

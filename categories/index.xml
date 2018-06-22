@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on cloud daydreams</title>
+    <link>https://arrjay.github.io/categories/</link>
+    <description>Recent content in Categories on cloud daydreams</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
+    <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
+    <lastBuildDate>Fri, 04 Jul 2014 18:01:45 -0400</lastBuildDate>
+    
+	<atom:link href="https://arrjay.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Aix</title>
+      <link>https://arrjay.github.io/categories/aix/</link>
+      <pubDate>Fri, 04 Jul 2014 18:01:45 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/aix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Crazyoldthings</title>
+      <link>https://arrjay.github.io/categories/crazyoldthings/</link>
+      <pubDate>Thu, 10 Jul 2014 23:31:42 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/crazyoldthings/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Darwin</title>
+      <link>https://arrjay.github.io/categories/darwin/</link>
+      <pubDate>Thu, 10 Jul 2014 23:31:42 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/darwin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Esx</title>
+      <link>https://arrjay.github.io/categories/esx/</link>
+      <pubDate>Thu, 10 Jul 2014 23:31:42 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/esx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hardware</title>
+      <link>https://arrjay.github.io/categories/hardware/</link>
+      <pubDate>Fri, 04 Jul 2014 18:01:45 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Irix</title>
+      <link>https://arrjay.github.io/categories/irix/</link>
+      <pubDate>Mon, 07 Apr 2014 00:53:39 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/irix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Solaris</title>
+      <link>https://arrjay.github.io/categories/solaris/</link>
+      <pubDate>Mon, 07 Apr 2014 00:54:11 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/solaris/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Srm</title>
+      <link>https://arrjay.github.io/categories/srm/</link>
+      <pubDate>Mon, 28 Apr 2014 01:34:17 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/srm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windowsnt</title>
+      <link>https://arrjay.github.io/categories/windowsnt/</link>
+      <pubDate>Fri, 04 Jul 2014 18:01:45 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/categories/windowsnt/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

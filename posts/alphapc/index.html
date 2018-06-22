@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>AlphaPC 164 LX  &middot; cloud daydreams</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://arrjay.github.io/posts/alphapc/">
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="/" class="logo-title">INDEX</a></li>
+      <li><a href="/categories">CATEGORIES</a></li>
+      <li><a href="/tags">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="/">
+        <img src="/images/logo.png" width="260px" height="48px" />
+      </a>
+    </div>
+
+
+<a href="https://arrjay.github.io/posts/alphapc/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>28 Apr 2014, 01:34</time>
+      <h1>AlphaPC 164 LX</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#firmware-on-the-alphapc-164-lx">Firmware on the AlphaPC 164 LX</a>
+<ul>
+<li><a href="#to-flash-from-alphabios-to-srm">To flash from alphabios to SRM:</a></li>
+<li><a href="#to-switch-from-pc-console-to-serial-port-in-srm">To switch from PC Console to Serial port in SRM:</a></li>
+<li><a href="#to-switch-back">To switch back</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+
+<section class="post-content">
+  
+
+<h1 id="firmware-on-the-alphapc-164-lx">Firmware on the AlphaPC 164 LX</h1>
+
+<p>This machine can only hold alphabios <em>or</em> SRM in flash memory. This means you cannot flip from booting NT to booting OSS things without reflashing the machine.</p>
+
+<h2 id="to-flash-from-alphabios-to-srm">To flash from alphabios to SRM:</h2>
+
+<ol>
+<li>In the backend, get &lsquo;lx164nt.rom&rsquo; to actually be the SRM firmware image. If using my puppet mess, netboot::flag::alphapc_164lx_defaultfw: &lsquo;srm&rsquo; should do what you want.</li>
+<li>Press F2 during boot to enter setup</li>
+<li>Choose &ldquo;AlphaBIOS Upgrade&hellip;&rdquo; from the menu. Wait for it to finish scanning the floppy.
+
+<ul>
+<li>It should say &ldquo;SRM Console 5.8-1 000621.1129&rdquo; as the new version if all went well. Press F10 to do the flash. Power cycle the system (yes, the power switch!) to actually reboot.</li>
+</ul></li>
+</ol>
+
+<h2 id="to-switch-from-pc-console-to-serial-port-in-srm">To switch from PC Console to Serial port in SRM:</h2>
+
+<ul>
+<li>at the &lsquo;&gt;&gt;&gt;&rsquo; prompt</li>
+</ul>
+
+<pre><code>set console serial
+init
+</code></pre>
+
+<p><code>init</code> reboots the system</p>
+
+<h2 id="to-switch-back">To switch back</h2>
+
+<pre><code>set console graphics
+</code></pre>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2farrjay.github.io%2fposts%2falphapc%2f&t=AlphaPC%20164%20LX" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2farrjay.github.io%2fposts%2falphapc%2f&text=AlphaPC%20164%20LX&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=https%3a%2f%2farrjay.github.io%2fposts%2falphapc%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=https%3a%2f%2farrjay.github.io%2fposts%2falphapc%2f&title=AlphaPC%20164%20LX" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:rbergero@gmail.com">RJ Bergeron</a>
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="https://arrjay.github.io//categories/hardware">"hardware"</a>
+      
+      <a href="https://arrjay.github.io//categories/windowsnt">"windowsnt"</a>
+      
+      <a href="https://arrjay.github.io//categories/srm">"srm"</a>
+      
+      <a href="https://arrjay.github.io//categories/crazyoldthings">"crazyoldthings"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="https://arrjay.github.io/tags/howto">"howto"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+
+<div class="post-comment">
+  
+</div>
+
+<div class="paging post-paging">
+  
+  <a class="left" href="https://arrjay.github.io/posts/ibm-7043-140/" rel="prev">
+    <i class="fa fa-caret-left" aria-hidden="true"></i> <span>IBM 7043 140 (43p)</span>
+  </a>
+  
+  
+  <a class="right" href="https://arrjay.github.io/posts/tiny-solaris/" rel="next">
+    <span>Installing Solaris 8 on a tiny machine (sparcstation LX)</span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </a>
+  
+</div>
+
+<footer class="footer">
+  Copyright (C) RJ Bergeron, All Rights Reserved.<br>
+  Theme by <a href="https://blog.lulab.net">DONGGEUN,BANG</a>
+</footer>
+
+</body>
+</html>
+

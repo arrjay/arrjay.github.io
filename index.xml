@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloud daydreams</title>
+    <link>https://arrjay.github.io/</link>
+    <description>Recent content on cloud daydreams</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
+    <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
+    <lastBuildDate>Thu, 10 Jul 2014 23:31:42 -0400</lastBuildDate>
+    
+	<atom:link href="https://arrjay.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Copper (Darwin 8.0.1)</title>
+      <link>https://arrjay.github.io/posts/copper/</link>
+      <pubDate>Thu, 10 Jul 2014 23:31:42 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/copper/</guid>
+      <description>Installing Darwin 8.0.1 as a VM Copper is an installation of Darwin 8.0.1. Installing Darwin is&amp;hellip;finicky.
+Avoid installing to ufs, that seems to work very poorly.
+ESXi configuration  Virtual Machine - version 8 Hardware Hard disk 1 should be attached to IDE bus (0:0) 768MB of RAM seems to be plenty. E1000 ethernet adapter works here as well. For Guest OS I selected Other (FreeBSD (32-bit)) Once up and running, you probably want to tweak settings to always boot from CD first - simply disconnect from image when we&amp;rsquo;re done.</description>
+    </item>
+    
+    <item>
+      <title>IBM 7043 140 (43p)</title>
+      <link>https://arrjay.github.io/posts/ibm-7043-140/</link>
+      <pubDate>Fri, 04 Jul 2014 18:01:45 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/ibm-7043-140/</guid>
+      <description>Booting misc things on the IBM 7043-140 This machine is also known as the rs/6000 43p model 140, and finding documentation on it is scarce at best.
+Firmware Access Firmware can take it&amp;rsquo;s time to gather clues and actually start an interface.
+If booting from serial port (9600 8n1), system will begin firmware init by writing a series of &amp;ldquo;RS/6000&amp;rdquo;, then &amp;lsquo;memory&amp;rsquo;, &amp;lsquo;keyboard&amp;rsquo;, &amp;lsquo;network&amp;rsquo;, &amp;lsquo;scsi&amp;rsquo;, &amp;lsquo;speaker&amp;rsquo;. There are several keys you can press to enter diagnostic utilities immediately after &amp;lsquo;keyboard&amp;rsquo; displays.</description>
+    </item>
+    
+    <item>
+      <title>AlphaPC 164 LX</title>
+      <link>https://arrjay.github.io/posts/alphapc/</link>
+      <pubDate>Mon, 28 Apr 2014 01:34:17 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/alphapc/</guid>
+      <description>Firmware on the AlphaPC 164 LX This machine can only hold alphabios or SRM in flash memory. This means you cannot flip from booting NT to booting OSS things without reflashing the machine.
+To flash from alphabios to SRM:  In the backend, get &amp;lsquo;lx164nt.rom&amp;rsquo; to actually be the SRM firmware image. If using my puppet mess, netboot::flag::alphapc_164lx_defaultfw: &amp;lsquo;srm&amp;rsquo; should do what you want. Press F2 during boot to enter setup Choose &amp;ldquo;AlphaBIOS Upgrade&amp;hellip;&amp;rdquo; from the menu.</description>
+    </item>
+    
+    <item>
+      <title>Installing Solaris 8 on a tiny machine (sparcstation LX)</title>
+      <link>https://arrjay.github.io/posts/tiny-solaris/</link>
+      <pubDate>Mon, 07 Apr 2014 00:54:11 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/tiny-solaris/</guid>
+      <description>If the installer drops to a # prompt complaining about bpgetfile - don&amp;rsquo;t worry, just type exit - you&amp;rsquo;re doing an interactive install anyway.
+At some point the installer will look at the amount of RAM in the box (64MB baby!) and stop. So we need to configure a disk, and swap now, then continue the installation.
+ run &amp;lsquo;format&amp;rsquo; to see the disks attached to the machine - you probably want disk 0, type 0 at the prompt.</description>
+    </item>
+    
+    <item>
+      <title>IRIX 6.2 Installation and patching</title>
+      <link>https://arrjay.github.io/posts/irix62-install/</link>
+      <pubDate>Mon, 07 Apr 2014 00:53:39 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/irix62-install/</guid>
+      <description>do the install, reboot  install default is the magic for inst selection.  DHCP will give you back an address, but you need to configure DNS. routed(!) will hand you a default route.  echo &#39;nameserver 10.100.252.2&#39; &amp;gt; /etc/resolv.conf echo &#39;domain j.hack&#39; &amp;gt;&amp;gt; /etc/resolv.conf echo &#39;hostname&#39; &amp;gt; /etc/sys_id cat /etc/hosts|sed s/IRIS/xxxHOSTNAMExxx/g &amp;gt; /etc/hosts.1 mv /etc/hosts.1 /etc/hosts   you can verify with ping - there is no host or getent here!</description>
+    </item>
+    
+  </channel>
+</rss>

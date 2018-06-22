@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>IBM 7043 140 (43p)  &middot; cloud daydreams</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://arrjay.github.io/posts/ibm-7043-140/">
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="/" class="logo-title">INDEX</a></li>
+      <li><a href="/categories">CATEGORIES</a></li>
+      <li><a href="/tags">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="/">
+        <img src="/images/logo.png" width="260px" height="48px" />
+      </a>
+    </div>
+
+
+<a href="https://arrjay.github.io/posts/ibm-7043-140/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>04 Jul 2014, 18:01</time>
+      <h1>IBM 7043 140 (43p)</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#booting-misc-things-on-the-ibm-7043-140">Booting misc things on the IBM 7043-140</a>
+<ul>
+<li><a href="#firmware-access">Firmware Access</a></li>
+<li><a href="#windows-nt">Windows NT</a></li>
+<li><a href="#aix-5-1">AIX 5.1</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+
+<section class="post-content">
+  
+
+<h1 id="booting-misc-things-on-the-ibm-7043-140">Booting misc things on the IBM 7043-140</h1>
+
+<p>This machine is also known as the rs/6000 43p model 140, and finding documentation on it is scarce at best.</p>
+
+<h2 id="firmware-access">Firmware Access</h2>
+
+<p>Firmware can take it&rsquo;s time to gather clues and actually start an interface.</p>
+
+<p>If booting from serial port (9600 8n1), system will begin firmware init by writing a series of &ldquo;RS/6000&rdquo;, then &lsquo;memory&rsquo;, &lsquo;keyboard&rsquo;, &lsquo;network&rsquo;, &lsquo;scsi&rsquo;, &lsquo;speaker&rsquo;. There are several keys you can press to enter diagnostic utilities immediately after &lsquo;keyboard&rsquo; displays.</p>
+
+<ul>
+<li><code>1</code> Enter System Management Services
+
+<ul>
+<li>a somewhat easier interface for setting and displaying system settings. on-screen menu based.</li>
+</ul></li>
+<li><code>8</code> Enter Open Firmware
+
+<ul>
+<li>&lsquo;reset-all&rsquo; will restart the machine and get out of open firmware.</li>
+</ul></li>
+</ul>
+
+<h2 id="windows-nt">Windows NT</h2>
+
+<p>Using the arc151 diskette here is fine to boot the system. I swapped the matrox-based (and firmware supported) video board for a S3 Vision864 board. Specifically a Diamond Stealth64 from a PC. ARC can initialize this video card by itself, so diag output actually goes to the serial port.</p>
+
+<p>Once ARC begins, the keyboard is initialized in a way my KVM (Linksys ProConnect) can&rsquo;t cope with, you will need to use a direct-attached keyboard. Windows NT itself does not suffer from this once actually booted.</p>
+
+<p>ARC/Windows NT here does not cope with a 16GB disk, but it seems fine with an 8GB one.</p>
+
+<p>Trying to start the driver for the onboard pcnet ethernet crashes the NT kernel with a machine check.</p>
+
+<h2 id="aix-5-1">AIX 5.1</h2>
+
+<p>This is the last version of AIX that boots. 5.2 starts bootstrap and hangs.</p>
+
+<p>For installing AIX from CD, just make sure the CD is an attempted device before hard disk. Insert &lsquo;Volume 1 of 5&rsquo; and reset the system.</p>
+
+<p>The system will reconfigure the boot device, so it is ok to leave the CD in after boot.</p>
+
+<p>CD1 is actually all you need to complete a basic install :)</p>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2farrjay.github.io%2fposts%2fibm-7043-140%2f&t=IBM%207043%20140%20%2843p%29" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2farrjay.github.io%2fposts%2fibm-7043-140%2f&text=IBM%207043%20140%20%2843p%29&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=https%3a%2f%2farrjay.github.io%2fposts%2fibm-7043-140%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=https%3a%2f%2farrjay.github.io%2fposts%2fibm-7043-140%2f&title=IBM%207043%20140%20%2843p%29" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:rbergero@gmail.com">RJ Bergeron</a>
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="https://arrjay.github.io//categories/hardware">"hardware"</a>
+      
+      <a href="https://arrjay.github.io//categories/aix">"aix"</a>
+      
+      <a href="https://arrjay.github.io//categories/windowsnt">"windowsnt"</a>
+      
+      <a href="https://arrjay.github.io//categories/crazyoldthings">"crazyoldthings"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="https://arrjay.github.io/tags/howto">"howto"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+
+<div class="post-comment">
+  
+</div>
+
+<div class="paging post-paging">
+  
+  <a class="left" href="https://arrjay.github.io/posts/copper/" rel="prev">
+    <i class="fa fa-caret-left" aria-hidden="true"></i> <span>Copper (Darwin 8.0.1)</span>
+  </a>
+  
+  
+  <a class="right" href="https://arrjay.github.io/posts/alphapc/" rel="next">
+    <span>AlphaPC 164 LX</span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </a>
+  
+</div>
+
+<footer class="footer">
+  Copyright (C) RJ Bergeron, All Rights Reserved.<br>
+  Theme by <a href="https://blog.lulab.net">DONGGEUN,BANG</a>
+</footer>
+
+</body>
+</html>
+
