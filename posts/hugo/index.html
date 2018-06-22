@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Why I chose Hugo for setting up this blog  &middot; cloud daydreams</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://arrjay.github.io/posts/hugo/">
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="/" class="logo-title">INDEX</a></li>
+      <li><a href="/categories">CATEGORIES</a></li>
+      <li><a href="/tags">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="/">
+        <img src="/images/logo.png" width="260px" height="48px" />
+      </a>
+    </div>
+
+
+<a href="https://arrjay.github.io/posts/hugo/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>22 Jun 2018, 14:56</time>
+      <h1>Why I chose Hugo for setting up this blog</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#static-generator-with-a-live-updater">Static generator with a live updater</a></li>
+<li><a href="#trivially-portable-self-contained">Trivially portable, self contained</a></li>
+</ul>
+</nav>
+</div>
+
+<section class="post-content">
+  
+
+<p>So this site is set up using <a href="https://gohugo.io">Hugo</a> and I figure I&rsquo;d detail a little bit of why.</p>
+
+<h1 id="static-generator-with-a-live-updater">Static generator with a live updater</h1>
+
+<p>One of the easier ways to do hosting is to have a simple collection of files to upload to a webserver,
+rather than building a server environment to run a blog engine. This also gives you the capability
+to more easily move your site between providers.</p>
+
+<p>However, not having an engine has drawbacks too - you need to track all your HTML snippets for a
+consistent experience, if you maintain indexes update <em>those</em>, and so on.</p>
+
+<p>The tradeoff with a static generator is you need to create your post content as input files, write
+those somewhere and then run the generator. Hugo helps here with their live server mode, where you
+can edit the input files for hugo to render on-the-fly and serve via a built-in HTTP server.</p>
+
+<h1 id="trivially-portable-self-contained">Trivially portable, self contained</h1>
+
+<p>Hugo&rsquo;s decision to be written in <a href="https://golang.org">golang</a> let them target a variety of operating
+systems - I can use their binaries on Linux, OS X, Windows and Android. This gives me the flexibility
+to not have a need for an environment specifically to run Hugo, I can just try it out wherever I
+happen to be. It also means everything Hugo needs to run is contained within their binary. There are
+no additional frameworks, servers, or dependencies I need beyond the blog source files.</p>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2farrjay.github.io%2fposts%2fhugo%2f&t=Why%20I%20chose%20Hugo%20for%20setting%20up%20this%20blog" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2farrjay.github.io%2fposts%2fhugo%2f&text=Why%20I%20chose%20Hugo%20for%20setting%20up%20this%20blog&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=https%3a%2f%2farrjay.github.io%2fposts%2fhugo%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=https%3a%2f%2farrjay.github.io%2fposts%2fhugo%2f&title=Why%20I%20chose%20Hugo%20for%20setting%20up%20this%20blog" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:rbergero@gmail.com">RJ Bergeron</a>
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="https://arrjay.github.io//categories/reasoning">"reasoning"</a>
+      
+      <a href="https://arrjay.github.io//categories/software">"software"</a>
+      
+      <a href="https://arrjay.github.io//categories/blogging">"blogging"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="https://arrjay.github.io/tags/meta">"meta"</a>
+          
+          <a href="https://arrjay.github.io/tags/pipeline">"pipeline"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+
+<div class="post-comment">
+  
+</div>
+
+<div class="paging post-paging">
+  
+  
+  <a class="right" href="https://arrjay.github.io/posts/copper/" rel="next">
+    <span>Copper (Darwin 8.0.1)</span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </a>
+  
+</div>
+
+<footer class="footer">
+  Copyright (C) RJ Bergeron, All Rights Reserved.<br>
+  Theme by <a href="https://blog.lulab.net">DONGGEUN,BANG</a>
+</footer>
+
+</body>
+</html>
+
