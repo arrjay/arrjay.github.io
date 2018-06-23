@@ -36,39 +36,19 @@
 
 
 
-  <a href="https://arrjay.github.io/posts/environment/">
+  <a href="https://arrjay.github.io/posts/irix62-install/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
     <div class="post-meta">
-      <time>23 Jun 2018, 00:18</time>
-      <h1>Environment Variables Rule Everything Around You</h1>
+      <time>07 Apr 2014, 00:53</time>
+      <h1>IRIX 6.2 Installation and patching</h1>
     </div>
   </div>
 </a>
 <div class="summary-content">
-  There&rsquo;s lots of discussion for operating systems about processes, ipc, files and such, I wanted to take a moment and touch on some internals I find incredibly useful in my day to day work. Environment variables!
-NOTE: I&rsquo;m really only covering Linux/OS X/POSIX class systems here, Windows (and PowerShell) have some slightly different edges.
-What Via Wikipedia - an environment variable is &ldquo;a dynamic-named value that can affect the way running processes will behave on a computer.
+  do the install, reboot  install default is the magic for inst selection.  DHCP will give you back an address, but you need to configure DNS. routed(!) will hand you a default route.  echo 'nameserver 10.100.252.2' &gt; /etc/resolv.conf echo 'domain j.hack' &gt;&gt; /etc/resolv.conf echo 'hostname' &gt; /etc/sys_id cat /etc/hosts|sed s/IRIS/xxxHOSTNAMExxx/g &gt; /etc/hosts.1 mv /etc/hosts.1 /etc/hosts   you can verify with ping - there is no host or getent here!
   
-  <a href="/posts/environment/" class="summary-more">READ MORE</a>
-  
-</div>
-  <hr class="summary-sep" />
-
-  <a href="https://arrjay.github.io/posts/hugo/">
-  <div class="post-title">
-    <img src="/images/post-title-icon.png" />
-    <div class="post-meta">
-      <time>22 Jun 2018, 14:56</time>
-      <h1>Why I chose Hugo for setting up this blog</h1>
-    </div>
-  </div>
-</a>
-<div class="summary-content">
-  So this site is set up using Hugo and I figure I&rsquo;d detail a little bit of why.
-Static generator with a live updater One of the easier ways to do hosting is to have a simple collection of files to upload to a webserver, rather than building a server environment to run a blog engine. This also gives you the capability to more easily move your site between providers.
-  
-  <a href="/posts/hugo/" class="summary-more">READ MORE</a>
+  <a href="/posts/irix62-install/" class="summary-more">READ MORE</a>
   
 </div>
   <hr class="summary-sep" />
@@ -76,11 +56,11 @@ Static generator with a live updater One of the easier ways to do hosting is to 
 
 <div class="paging">
   
-  PAGE 1 / 4
-  
-  <a href="/page/2/" rel="next">
-    <i class="fa fa-caret-right" aria-hidden="true"></i>
+  <a href="/page/3/" rel="prev">
+    <i class="fa fa-caret-left" aria-hidden="true"></i>
   </a>
+  
+  PAGE 4 / 4
   
 </div>
 

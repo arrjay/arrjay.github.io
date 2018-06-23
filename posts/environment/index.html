@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Environment Variables Rule Everything Around You  &middot; cloud daydreams</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://arrjay.github.io/posts/environment/">
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="/" class="logo-title">INDEX</a></li>
+      <li><a href="/categories">CATEGORIES</a></li>
+      <li><a href="/tags">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="/">
+        <img src="/images/logo.png" width="260px" height="48px" />
+      </a>
+    </div>
+
+
+<a href="https://arrjay.github.io/posts/environment/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>23 Jun 2018, 00:18</time>
+      <h1>Environment Variables Rule Everything Around You</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#what">What</a>
+<ul>
+<li><a href="#a-diversion-shell-variables-ssh-docker-and-sudo">A Diversion - shell variables, ssh, docker and sudo</a>
+<ul>
+<li><a href="#can-i-just-list-all-the-shell-variables">Can I just list all the shell variables?</a></li>
+</ul></li>
+<li><a href="#reading">Reading</a>
+<ul>
+<li><a href="#your-shell-s">Your shell&rsquo;s</a></li>
+<li><a href="#something-else-s">Something else&rsquo;s</a></li>
+</ul></li>
+<li><a href="#setting">Setting</a></li>
+<li><a href="#overriding">Overriding</a></li>
+<li><a href="#forgetting">Forgetting</a></li>
+</ul></li>
+<li><a href="#important-environment-variables">Important Environment Variables</a>
+<ul>
+<li><a href="#path">PATH</a>
+<ul>
+<li><a href="#other-path-type-environment-variables">Other path-type environment variables</a></li>
+</ul></li>
+<li><a href="#editor">EDITOR</a></li>
+<li><a href="#pager">PAGER</a></li>
+<li><a href="#term">TERM</a></li>
+<li><a href="#home">HOME</a></li>
+<li><a href="#tmpdir">TMPDIR</a></li>
+<li><a href="#tz">TZ</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+
+<section class="post-content">
+  
+
+<p>There&rsquo;s lots of discussion for operating systems about processes, ipc, files and such, I wanted to take a moment and touch on some internals I find
+incredibly useful in my day to day work. Environment variables!</p>
+
+<p>NOTE: I&rsquo;m really only covering Linux/OS X/POSIX class systems here, Windows (and PowerShell) have some slightly different edges.</p>
+
+<h1 id="what">What</h1>
+
+<p>Via <a href="https://en.wikipedia.org/wiki/Environment_variable">Wikipedia</a> - an environment variable is
+&ldquo;a dynamic-named value that can affect the way running processes will behave on a computer.&rdquo;</p>
+
+<p>That&rsquo;s really, all there is to it. The <a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html">POSIX.1 Specification</a> provides
+conventions for application writers, but if you want to make a program that behaves differently there&rsquo;s nothing stopping you! As part of the C standard,
+most languages will provide a <code>getenv()</code> function - it is often part of the <code>os</code> library. The only other guidance I have is environment variables are
+<em>usually</em> upper case for the key, but some operating systems will allow you to set lower-cased names. Said operating systems are also generally case
+sensitive, so setting up <code>path</code> is not the same as setting up <code>PATH</code>.</p>
+
+<h2 id="a-diversion-shell-variables-ssh-docker-and-sudo">A Diversion - shell variables, ssh, docker and sudo</h2>
+
+<p>For people interacting with computers via some sort of command line, that command line is often a general purpose shell. This brings up a whole new layer
+of confusion, as your typical shell will commingle environment variables <em>and</em> variables internal to your shell session. The key things to keep in mind are:</p>
+
+<ul>
+<li>shell variables are not passed along to new processes started by the shell</li>
+<li>most shells can promote a shell variable to an environment variable via the <code>export</code> builtin</li>
+<li><code>ssh</code>, since it typically starts a new user login against a remote host, does not bring along environment variables without specific configuration.</li>
+<li><code>docker</code> is similar to the <code>ssh</code> case because the underlying machinery starts a new environment image.</li>
+<li><code>sudo</code> is an interesting case. While it is a child of your process tree, as a security control, it explicitly <em>resets</em> the environment in most cases.</li>
+</ul>
+
+<h3 id="can-i-just-list-all-the-shell-variables">Can I just list all the shell variables?</h3>
+
+<p>Usually! Most shells allow enumerating their environment.</p>
+
+<ul>
+<li><code>csh</code> uses <code>set</code></li>
+<li>in <code>bash</code> you can use <code>declare -p | grep -v -- ' -x '</code></li>
+<li>in <code>zsh</code> you can use <code>typeset -p | grep -v ^export</code></li>
+<li>in <code>fish</code> you can use <code>set -S</code> to get information on all variables and their scope(s)</li>
+</ul>
+
+<h2 id="reading">Reading</h2>
+
+<p>The main point I will stress is <em>do not use</em> <code>echo $VAR</code> to check for environment variables! The result of that variable is computed by the shell before
+execution, so that will return shell variables that may not be configured for export.</p>
+
+<h3 id="your-shell-s">Your shell&rsquo;s</h3>
+
+<p>The <code>env</code> and <code>printenv</code> commands will display all environment variables exported from your current environment. As this is a straight up command, it does not
+matter which shell environment you are running.</p>
+
+<h3 id="something-else-s">Something else&rsquo;s</h3>
+
+<p>Linux, at least, has the option to show environment variables in <code>ps</code> output - try <code>ps eaww</code> and <code>ps eww -p1</code>. There is also <code>/proc/${pid}/environ</code> typically.</p>
+
+<h2 id="setting">Setting</h2>
+
+<p>This is shell specific, again - however most shells use <code>export</code>. The <code>csh</code> shell is a notable exception here, using <code>setenv</code>.</p>
+
+<h2 id="overriding">Overriding</h2>
+
+<p>If you need to override an environment variable, <code>env</code> has a trick up it&rsquo;s sleeve - You can prepend your program invocation with it to override variables like
+so:</p>
+
+<pre><code>env NAME=VALUE NAME2=VALUE command
+</code></pre>
+
+<h2 id="forgetting">Forgetting</h2>
+
+<p>This is all shell specific. Most shells let you &lsquo;demote&rsquo; an environment variable into a shell-exclusive one, too.</p>
+
+<ul>
+<li><code>csh</code>, appropriately, uses <code>unsetenv</code></li>
+<li>in <code>bash</code> you can use <code>declare +x ENVNAME</code> to turn an environment variable into a shell variable. You may also use <code>unset ENVNAME</code> to remove it entirely.</li>
+<li><code>zsh</code> has features similar to bash - <code>typeset +x ENVNAME</code> will turn environment variables in to shell variables, <code>unset ENVNAME</code> will completely drop it.</li>
+<li><code>fish</code> uses <code>set -xl ENVNAME</code> to remove the export scope from a variable. It also uses <code>set</code> for erasing variables, via <code>set -e ENVNAME</code>.</li>
+</ul>
+
+<h1 id="important-environment-variables">Important Environment Variables</h1>
+
+<h2 id="path">PATH</h2>
+
+<p>When your shell is given a line to evaluate, and the first word is not otherwise recognized, the shell will start looking for a <em>file</em> to run that matches the
+word. The list of directories checked by the shell is defined in the <code>PATH</code> variable. Since there is no convention for passing arrays or lists via environment
+variables, this is flattened into a <code>:</code> delimited string. Directories are checked linearly, from first to last in the list. Here&rsquo;s a quick demonstration of
+that mechanic:</p>
+
+<pre><code>$ echo $PATH
+/home/rj/Apps/packer-0.12.3/bin:/home/rj/Apps/packer-0.12.2/bin:/usr/bin:/bin:/usr/sbin:/sbin
+$ which packer
+/home/rj/Apps/packer-0.12.3/bin/packer
+$ export PATH=/home/rj/Apps/packer-0.12.2/bin:/usr/bin:/bin:/usr/sbin:/sbin
+$ which packer
+/home/rj/Apps/packer-0.12.2/bin/packer
+$ export PATH=/home/rj/Apps/packer-0.12.2/bin:/usr/bin:/bin:/usr/sbin:/sbin:/home/rj/Apps/packer-0.12.3/bin
+$ which packer
+/home/rj/Apps/packer-0.12.2/bin/packer
+</code></pre>
+
+<p>Note that the <code>packer</code> binary the shell found stayed with the one in the 0.12.2 folder, even after I added 0.12.3 - because I added to the <em>end</em> of <code>PATH</code>.</p>
+
+<h3 id="other-path-type-environment-variables">Other path-type environment variables</h3>
+
+<p>There are other environment variables that use this delimited list setup, and they often also have PATH in their names - <code>GOPATH</code> and <code>MANPATH</code> are examples.</p>
+
+<h2 id="editor">EDITOR</h2>
+
+<p>Remembering that most of these are by convention - <code>EDITOR</code> is usually used by anything that needs to get text input before proceeding - notably <code>git</code> commit
+messages. You don&rsquo;t need to set this to just the name of a program typically - I actually have mine as <code>gvim -f</code> to invoke a GUI editor and make sure whatever
+started it waits for the editor session to close. However, sometimes you will encounter a <a href="https://github.com/voxpupuli/hiera-eyaml/issues/130">bug</a>
+with this setup. Remember, it&rsquo;s up for every program to decide how to handle environment variables themselves.</p>
+
+<h2 id="pager">PAGER</h2>
+
+<p>Much like <code>EDITOR</code>, <code>PAGER</code> is used when something is presenting a lot of text and wants to give you the option to interactively &lsquo;page&rsquo; through it. The
+desired interaction is slightly different, most programs that are considered &ldquo;pagers&rdquo; simply allow for displaying a screenful of text, then having a user
+press space to continue on to the next page and such.</p>
+
+<h2 id="term">TERM</h2>
+
+<p>The <code>TERM</code> environment variable is one of the very few environment variables you <em>do</em> take with you. It is used to help identify the correct way to interact
+with your console/shell window for interactive programs - the shell itself is an interactive program! If you are having trouble with &ldquo;full-screen&rdquo; applications
+in your shell sessions, this is a least worth looking at. Unfortunately, the how and why of setting it is also rather arcane, and will not be detailed here.</p>
+
+<h2 id="home">HOME</h2>
+
+<p>This environment variable refers to your user directory on most systems, it is especially convenient if you need to go to a different directory to run
+a process, but want a quick way to refer to files you have created - you can use something like <code>$HOME/my-cool-file</code> to get at them from anywhere.</p>
+
+<h2 id="tmpdir">TMPDIR</h2>
+
+<p>If you call <code>mktemp</code> or otherwise work with something that needs to buffer to a file, especially if it needs to be a large file, manipulating <code>TMPDIR</code> to a
+location suited to your needs can be handier than explicitly calling <code>mktemp</code> with a template specification.</p>
+
+<h2 id="tz">TZ</h2>
+
+<p>If you are working with a remote system, but you want times on the system to be reflected in your time zone, not wherever the system is, the <code>TZ</code> variable is
+a convenient hook to override it. For details see <a href="https://www.freebsd.org/cgi/man.cgi?query=tzset&amp;sektion=3&amp;n=1">this FreeBSD man page</a></p>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2farrjay.github.io%2fposts%2fenvironment%2f&t=Environment%20Variables%20Rule%20Everything%20Around%20You" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2farrjay.github.io%2fposts%2fenvironment%2f&text=Environment%20Variables%20Rule%20Everything%20Around%20You&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=https%3a%2f%2farrjay.github.io%2fposts%2fenvironment%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=https%3a%2f%2farrjay.github.io%2fposts%2fenvironment%2f&title=Environment%20Variables%20Rule%20Everything%20Around%20You" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:rbergero@gmail.com">RJ Bergeron</a>
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="https://arrjay.github.io//categories/software">"software"</a>
+      
+      <a href="https://arrjay.github.io//categories/nix">"nix"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="https://arrjay.github.io/tags/bash">"bash"</a>
+          
+          <a href="https://arrjay.github.io/tags/zsh">"zsh"</a>
+          
+          <a href="https://arrjay.github.io/tags/csh">"csh"</a>
+          
+          <a href="https://arrjay.github.io/tags/fish">"fish"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+
+<div class="post-comment">
+  
+</div>
+
+<div class="paging post-paging">
+  
+  
+  <a class="right" href="https://arrjay.github.io/posts/hugo/" rel="next">
+    <span>Why I chose Hugo for setting up this blog</span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </a>
+  
+</div>
+
+<footer class="footer">
+  Copyright (C) RJ Bergeron, All Rights Reserved.<br>
+  Theme by <a href="https://blog.lulab.net">DONGGEUN,BANG</a>
+</footer>
+
+</body>
+</html>
+

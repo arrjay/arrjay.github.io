@@ -8,10 +8,21 @@
     <language>en-us</language>
     <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
     <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
-    <lastBuildDate>Fri, 22 Jun 2018 14:56:08 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Jun 2018 00:18:42 -0400</lastBuildDate>
     
 	<atom:link href="https://arrjay.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Environment Variables Rule Everything Around You</title>
+      <link>https://arrjay.github.io/posts/environment/</link>
+      <pubDate>Sat, 23 Jun 2018 00:18:42 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/environment/</guid>
+      <description>There&amp;rsquo;s lots of discussion for operating systems about processes, ipc, files and such, I wanted to take a moment and touch on some internals I find incredibly useful in my day to day work. Environment variables!
+NOTE: I&amp;rsquo;m really only covering Linux/OS X/POSIX class systems here, Windows (and PowerShell) have some slightly different edges.
+What Via Wikipedia - an environment variable is &amp;ldquo;a dynamic-named value that can affect the way running processes will behave on a computer.</description>
+    </item>
     
     <item>
       <title>Why I chose Hugo for setting up this blog</title>
