@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Reasoning on cloud daydreams</title>
-    <link>https://arrjay.github.io/categories/reasoning/</link>
-    <description>Recent content in Reasoning on cloud daydreams</description>
+    <title>Story on cloud daydreams</title>
+    <link>https://arrjay.github.io/tags/story/</link>
+    <description>Recent content in Story on cloud daydreams</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
     <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
     <lastBuildDate>Sun, 01 Jul 2018 16:13:21 +0000</lastBuildDate>
     
-	<atom:link href="https://arrjay.github.io/categories/reasoning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://arrjay.github.io/tags/story/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,16 +21,6 @@
       <guid>https://arrjay.github.io/posts/narrative/</guid>
       <description>Some criticism I received about my earlier article on environment variables highlighted a rwally big deficiency! I provided a large chunk of technical detail and explanations without a larger narrative. So in this post, I&amp;rsquo;d like to detail a few the reasons to be interested.
 Appreciating the magic As popular as it may be, &amp;ldquo;the cloud&amp;rdquo; is very much a declaration of abstraction - you don&amp;rsquo;t need to /usually/ worry about it, until you do.</description>
-    </item>
-    
-    <item>
-      <title>Why I chose Hugo for setting up this blog</title>
-      <link>https://arrjay.github.io/posts/hugo/</link>
-      <pubDate>Fri, 22 Jun 2018 14:56:08 +0000</pubDate>
-      <author>rbergero@gmail.com (RJ Bergeron)</author>
-      <guid>https://arrjay.github.io/posts/hugo/</guid>
-      <description>So this site is set up using Hugo and I figure I&amp;rsquo;d detail a little bit of why.
-Static generator with a live updater One of the easier ways to do hosting is to have a simple collection of files to upload to a webserver, rather than building a server environment to run a blog engine. This also gives you the capability to more easily move your site between providers.</description>
     </item>
     
   </channel>
