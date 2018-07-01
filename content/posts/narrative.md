@@ -7,7 +7,7 @@ categories:
   - reasoning
 ---
 
-Some criticism I received about my earlier article on environment variables highlighted a rwally big deficiency! I provided a large
+Some criticism I received about my earlier article on environment variables highlighted a really big deficiency! I provided a large
 chunk of technical detail and explanations without a larger narrative. So in this post, I'd like to detail a few the reasons to be
 interested.
 
