@@ -1,7 +1,10 @@
 ---
 title: "Narrative - The Cloud and making it yours"
-date: 2018-06-25T16:13:21Z
-draft: true
+date: 2018-07-01T16:13:21Z
+tags:
+  - story
+categories:
+  - reasoning
 ---
 
 Some criticism I received about my earlier article on environment variables highlighted a rwally big deficiency! I provided a large
@@ -21,4 +24,5 @@ track. A trade off of bare CPU instructions for a realization of the assumptions
 # Creation
 
 The ultimate goal here is to inspire people to not only build their own low level projects, but also be able to approach if something higher
-level malfunctions. Everything runs somewhere.
+level malfunctions. Everything runs somewhere. You don't have to be "cloud-native" - this is mostly stuff you can do in a scratch vm, or your
+own desktop.
