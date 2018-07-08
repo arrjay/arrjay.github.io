@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>customizing the linux console  &middot; cloud daydreams</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://arrjay.github.io/posts/fontastic/">
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="/" class="logo-title">INDEX</a></li>
+      <li><a href="/categories">CATEGORIES</a></li>
+      <li><a href="/tags">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="/">
+        <img src="/images/logo.png" width="260px" height="48px" />
+      </a>
+    </div>
+
+
+<a href="https://arrjay.github.io/posts/fontastic/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>08 Jul 2018, 15:09</time>
+      <h1>customizing the linux console</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#customizing-the-linux-console">Customizing the linux console</a>
+<ul>
+<li><a href="#fonts">Fonts</a>
+<ul>
+<li><a href="#installing-other-fonts">Installing other fonts</a></li>
+<li><a href="#converting-fonts">Converting fonts</a></li>
+<li><a href="#creating-fonts">Creating fonts</a></li>
+<li><a href="#making-it-permanent">Making it permanent</a>
+<ul>
+<li><a href="#in-systemd">In systemd</a></li>
+</ul></li>
+<li><a href="#screenshots">Screenshots</a></li>
+</ul></li>
+<li><a href="#resolution">Resolution</a>
+<ul>
+<li><a href="#for-modern-setups-the-video-parameter">For modern setups - the video parameter</a></li>
+<li><a href="#for-old-setups-the-vga-parameter">For old setups - the vga parameter</a></li>
+</ul></li>
+<li><a href="#colors">Colors</a>
+<ul>
+<li><a href="#per-user">Per-user</a></li>
+<li><a href="#default-foreground-background">Default foreground/background</a></li>
+<li><a href="#the-definition-of-color">The definition of color</a></li>
+</ul></li>
+<li><a href="#console-blanking">Console blanking</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+
+<section class="post-content">
+  
+
+<h1 id="customizing-the-linux-console">Customizing the linux console</h1>
+
+<p>If you have a little linux server, you don&rsquo;t need to go the full X11 route just to have a better time
+when you need to directly administer it. You can directly customize the console!</p>
+
+<h2 id="fonts">Fonts</h2>
+
+<p>The console here doesn&rsquo;t have niceties like an font renderer, and that&rsquo;s
+<a href="https://googleprojectzero.blogspot.com/2015/08/one-font-vulnerability-to-rule-them-all_13.html">arguably a good thing</a>
+- so we use <em>bitmap</em> fonts - the PSF format, described <a href="https://wiki.osdev.org/PC_Screen_Font">here</a>.
+Searching for &ldquo;psf fonts&rdquo; returns slighty more useful results than &ldquo;linux console font&rdquo;.</p>
+
+<h3 id="installing-other-fonts">Installing other fonts</h3>
+
+<p>Fonts are loaded into the linux console using the <code>setfont</code> utility. We actually have a trick up our sleeve
+herem this utility can also load NetBSD and FreeBSD console fonts, so we have all of those at our disposal
+as well.</p>
+
+<p>While playing with fonts, I <em>definately</em> recommand a VM for this - loading fonts with incomplete or corrupted
+symbols is trivial, and getting back out can be tricky. Doing this work in a VM means all you need to do is
+reset to get back to a sane state.</p>
+
+<p>To load a font, we use <code>setfont /path/to/file</code> and it will attempt loading whatever you handed it as a font.
+Unfortunately, the specifics of font support are up to your console driver past that. Notably, the classic
+VGA console is very limited, but most systems are using a framebuffer console now.</p>
+
+<p><a name="fontdir"></a>Unfortunately, distributions have not standardized on a console font path - Fedora/CentOS use
+<code>/lib/kbd/consolefonts</code>, Debian/Ubuntu uses <code>/usr/share/consolefonts</code>.</p>
+
+<p>Some distributions do include additional fonts as installable packages - the
+<a href="http://terminus-font.sourceforge.net/">Terminus</a> console font packages are available in Fedora/EPEL as
+<code>terminus-fonts-console</code>, for instance.</p>
+
+<p>While definately dated, <a href="http://v3.sk/~lkundrak/fonts/">this page</a> from 2007 also goes over a wealth of
+console fonts with downloadable links.</p>
+
+<p>After installing a font, you may want to use the <code>showconsolefont</code> utility to render a collection of characters
+from your font and see what they all look like.</p>
+
+<h3 id="converting-fonts">Converting fonts</h3>
+
+<p><a name="ttf2psf"></a>If you have a TTF/OTF font and you&rsquo;d like to try converting it for use in the console
+take a look at
+<a href="http://urchlay.naptime.net/repos/ttf-console-fonts/about/">ttf-console-fonts</a> as a convenient wrapper around
+all the utilities needed to render a modern font to bitmap and build a console font.</p>
+
+<p>If you have an old school .FON file - that&rsquo;s <em>already a bitmap font</em> - using <code>fon2fnts</code> and <code>fnt2psf</code> directly
+from <a href="https://www.seasip.info/Unix/PSF/">psftools</a> is the way to go here.</p>
+
+<h3 id="creating-fonts">Creating fonts</h3>
+
+<p>If you want to edit or create a new psf font,
+<a href="https://sites.google.com/site/mohammedisam2000/fontopia">fontopia</a> is an (as appropriate) console-based
+bitmap font editor that can create or update linux PSF files directly.</p>
+
+<h3 id="making-it-permanent">Making it permanent</h3>
+
+<h4 id="in-systemd">In systemd</h4>
+
+<p>Systemd sets up the console font using <code>/etc/vconsole.conf</code> - the <code>FONT=</code> variable is set to the base name
+(that is, the font name without .psfu/.psfu.gz extension) of a font from your <a href="#fontdir">console font path</a>.</p>
+
+<h3 id="screenshots">Screenshots</h3>
+
+<p>Here is a Fedora 28 system using the kernel default font:
+<img src="/screenshots/f28-defaultkernelfont.png" alt="fedora showconsolefont kernel default font" title="fedora showconsolefont kernel default font" /></p>
+
+<p>Here is that same system using <code>eurlatgr</code>, the default font Fedora puts in <code>/etc/vconsole.conf</code>:
+<img src="/screenshots/f28-eurlatgr.png" alt="fedora showconsolefont eurlatgr" title="fedora showconsolefont eurlatgr" /></p>
+
+<p>Note that here, the system has more characters available to it.</p>
+
+<p>There are also some 8x8 fonts available, if you desire density over readability:
+<img src="/screenshots/f28-drdos8x8.png" alt="fedora showconsolefont drdos8x8" title="fedora showconsolefont drdos8x8" /></p>
+
+<p>Here&rsquo;s my current preferred font, Terminus at 14 points, normal - <code>ter-v14n</code> is the font name here:
+<img src="/screenshots/f28-ter-v14n.png" alt="fedora showconsolefont ter-v14n" title="fedora showconsolefont ter-v14n" /></p>
+
+<p>To show off a converted font, here&rsquo;s &ldquo;3270 Semi-Narrow&rdquo;, converted via <a href="#ttf2psf">ttf-console-fonts</a>
+<img src="/screenshots/f28-3270seminarrow-8x15.png" alt="fedors showconsolefont 3270seminarrow8x15" title="fedora showconsolefont
+3270seminarrow8x15" /></p>
+
+<p>Not all conversions go well though! Here&rsquo;s a quick attempt I did at converting
+<a href="https://www.dafont.com/monofur.font">monofur</a> which is missing <code>-</code>:
+<img src="/screenshots/f28-monofur-regular-8x13.png" alt="fedora showconsolefont monofur-regular-8x13" title="fedora showconsolefont
+monofur-regular-8x13" /></p>
+
+<p>Playing with different sizes also produced this mess, which is why I really recommend a vm:
+<img src="/screenshots/f28-monofur-regular-9x14.png" alt="fedora showconsolefont monofur-regular-9x14" title="fedora showconsolefont monofur-regular-9x14" /></p>
+
+<p>As an example of converting .FON files, here&rsquo;s <a href="https://www.dcmembers.com/jibsen/download/61/">dina</a> in the
+console:
+<img src="/screenshots/f28-dina6.png" alt="fedora showconsolefont dina-6" title="fedora showconsolefont dina-6" /></p>
+
+<p>This is actually terifically readable, but is missing linedraw characters, which becomes apparent when you run
+<a href="https://midnight-commander.org/">mc</a>:</p>
+
+<p><img src="/screenshots/f28-dina6-mc.png" alt="fedora mc dina-6" title="fedora mc dina-6" /></p>
+
+<p>Here we cheerily loaded up the <a href="https://svnweb.freebsd.org/base/head/share/syscons/fonts/swiss-8x16.fnt?view=log">swiss-8x16</a> font from FreeBSD, after a <code>uudecode</code> to turn into binary:</p>
+
+<p><img src="/screenshots/f28-swiss-8x16.png" alt="fedora showconsolefont swiss-8x16" title="fedora showconsolefont swiss-8x16" /></p>
+
+<p>Okay, as a final shot, here&rsquo;s <a href="https://github.com/belluzj/fantasque-sans">fantasque-sans</a> in the console:
+<img src="/screenshots/f28-fantasque-sans-8x14.png" alt="fedora showconsolefont fantasquesansmono-8x14" title="fedora showconsolefont
+fantasquesanemono-8x14" /></p>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>Modern linux attempts to read your display resolution information via
+<a href="https://en.wikipedia.org/wiki/Extended_Display_Identification_Data">EDID</a>
+and maximize the resolution provided, to the best of the video card and monitor&rsquo;s capabilities. However, there
+are two cases where that breaks down: KVM/IP and VM consoles - there&rsquo;s not a useful concept of a monitor. In
+those cases, we can override the console system and force a specific resolution.</p>
+
+<h3 id="for-modern-setups-the-video-parameter">For modern setups - the video parameter</h3>
+
+<p>The modern
+<a name="drm"></a><a href="https://en.wikipedia.org/wiki/Direct_Rendering_Manager">Direct Rendering Manager</a>
+takes a <code>video=</code> parameter, which understands standard VESA modes, so overriding to a standard mode is
+trivial - something like <code>video=640x480</code> will force that particular mode.</p>
+
+<p>To find out what modes are supported, boot the kernel without a <code>video=</code> parameter and look at the contents of
+<code>/sys/class/drm/*/modes</code>. There is one folder under <code>/sys/class/drm</code> for each video output you have.</p>
+
+<h3 id="for-old-setups-the-vga-parameter">For old setups - the vga parameter</h3>
+
+<p>If you&rsquo;re running older kernel versions, you may not have <a href="#drm">drm</a> available for your particular video card,
+so you get to play with the <code>vga</code> parameter documented in
+<a href="https://www.kernel.org/doc/Documentation/svga.txt">svga.txt</a> and see what is available.</p>
+
+<h2 id="colors">Colors</h2>
+
+<p>Linux&rsquo;s console setup is a terminal in it&rsquo;s own right, so as appropriate, you can set/reset the console colors
+for when a a &ldquo;return to defaults&rdquo; escape code is sent.</p>
+
+<h3 id="per-user">Per-user</h3>
+
+<p>Use the <code>setterm</code> command with the <code>--foreground --store</code> or <code>--background --store</code> parameters to set the
+default foreground and background colors. Colors available are an interger index, <code>0</code> through <code>7</code>. You can
+verify the colors output on your console by running the <a name="setterm-loop"></a>following:</p>
+
+<pre><code>for i in $(seq 0 7) ; do setterm  --forground $i ; echo hi ; done
+</code></pre>
+
+<p>Here is a screenshot of the default colors (note 0 is black, so not visible here):</p>
+
+<p><img src="/screenshots/f28-setterm-loop.png" alt="fedora setterm foreground loop" title="fedora setterm foreground loop" /></p>
+
+<p>Note that <code>--store</code> is the important bit to set a &ldquo;default&rdquo; color.</p>
+
+<h3 id="default-foreground-background">Default foreground/background</h3>
+
+<p>Most console drivers support the <code>vt.color</code> kernel parameter - this is a pair of numbers specifying the
+background, then foreground colors using the color set discussed above. For instance, I have rebooted my VM
+with parameters here to have black on cyan - <code>3</code> is the background, <code>0</code> is the forground, giving <code>vt.color=0x30</code>
+as the complete parameter:</p>
+
+<p><img src="/screenshots/f28-vtcolor-0x30.png" alt="fedora vtcolor0x30" title="fedora vt.color=0x30" /></p>
+
+<h3 id="the-definition-of-color">The definition of color</h3>
+
+<p>One more trick up our sleve is to change the definitions of red, green and blue - the <code>setvtrgb</code> command can
+do this at runtime, and the <code>vt.default_{red,grn,blu}=</code> parameters can establish the default parameters at
+boot. Here&rsquo;s a screenshot of running <code>setvtrgb</code> and <a href="#setterm-loop">our setterm loop</a>:</p>
+
+<p><img src="/screenshots/f28-vtrgb-example.png" alt="fedora setvtrgb example" title="fedora setvtrgb example" /></p>
+
+<p>I got the <a href="/reference/vtrgb">vtrgb</a> above from an attachment on
+<a href="https://bugs.launchpad.net/ubuntu/+source/kbd/+bug/730672">this Ubuntu bug</a></p>
+
+<h2 id="console-blanking">Console blanking</h2>
+
+<p>Finally, the default behaviour in the linux console is to blank or
+<a href="https://en.wikipedia.org/wiki/VESA_Display_Power_Management_Signaling">DPMS</a> off when possible after 10
+minutes - that can be disabled, which is often useful for a server.</p>
+
+<p>It&rsquo;s very simple to do, just add <code>consoleblank=0</code> as a kernel argument.</p>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2farrjay.github.io%2fposts%2ffontastic%2f&t=customizing%20the%20linux%20console" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2farrjay.github.io%2fposts%2ffontastic%2f&text=customizing%20the%20linux%20console&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=https%3a%2f%2farrjay.github.io%2fposts%2ffontastic%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=https%3a%2f%2farrjay.github.io%2fposts%2ffontastic%2f&title=customizing%20the%20linux%20console" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:rbergero@gmail.com">RJ Bergeron</a>
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="https://arrjay.github.io//categories/linux">"linux"</a>
+      
+      <a href="https://arrjay.github.io//categories/makeityours">"makeityours"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="https://arrjay.github.io/tags/howto">"howto"</a>
+          
+          <a href="https://arrjay.github.io/tags/screenshots">"screenshots"</a>
+          
+          <a href="https://arrjay.github.io/tags/fonts">"fonts"</a>
+          
+          <a href="https://arrjay.github.io/tags/colors">"colors"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+
+<div class="post-comment">
+  
+</div>
+
+<div class="paging post-paging">
+  
+  
+  <a class="right" href="https://arrjay.github.io/posts/narrative/" rel="next">
+    <span>Narrative - The Cloud and making it yours</span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </a>
+  
+</div>
+
+<footer class="footer">
+  Copyright (C) RJ Bergeron, All Rights Reserved.<br>
+  Theme by <a href="https://blog.lulab.net">DONGGEUN,BANG</a>
+</footer>
+
+</body>
+</html>
+
