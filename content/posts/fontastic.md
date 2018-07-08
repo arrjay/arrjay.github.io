@@ -27,7 +27,7 @@ Searching for "psf fonts" returns slighty more useful results than "linux consol
 ### Installing other fonts
 
 Fonts are loaded into the linux console using the `setfont` utility. We actually have a trick up our sleeve
-herem this utility can also load NetBSD and FreeBSD console fonts, so we have all of those at our disposal
+here, this utility can also load NetBSD and FreeBSD console fonts, so we have all of those at our disposal
 as well.
 
 While playing with fonts, I _definately_ recommand a VM for this - loading fonts with incomplete or corrupted
