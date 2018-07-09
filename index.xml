@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
     <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
-    <lastBuildDate>Sun, 08 Jul 2018 15:09:08 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 09 Jul 2018 02:58:57 -0400</lastBuildDate>
     
 	<atom:link href="https://arrjay.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Objectgraph Tag Hack</title>
+      <link>https://arrjay.github.io/posts/objectgraph-tag-hack/</link>
+      <pubDate>Mon, 09 Jul 2018 02:58:57 -0400</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/objectgraph-tag-hack/</guid>
+      <description>Hacking in Facebook Object Graph Image tags for hugo posts Just detailing that as of this commit I added support for setting Facebook Object Graph preview-image settings in my Hugo templates. It was really to add in the front matter, actually, once I realized you can refer to anything in front matter under Params. The main tricky thing was FB wanted absolute URIs, so I had to use absURL (which I did, in the next commit).</description>
+    </item>
     
     <item>
       <title>customizing the linux console</title>

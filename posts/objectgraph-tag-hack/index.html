@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Objectgraph Tag Hack  &middot; cloud daydreams</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://arrjay.github.io/posts/objectgraph-tag-hack/">
+  
+  
+  <meta property="og:image" content="https://arrjay.github.io/reference/seriously.png">
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="/" class="logo-title">INDEX</a></li>
+      <li><a href="/categories">CATEGORIES</a></li>
+      <li><a href="/tags">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="/">
+        <img src="/images/logo.png" width="260px" height="48px" />
+      </a>
+    </div>
+
+
+<a href="https://arrjay.github.io/posts/objectgraph-tag-hack/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>09 Jul 2018, 02:58</time>
+      <h1>Objectgraph Tag Hack</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#hacking-in-facebook-object-graph-image-tags-for-hugo-posts">Hacking in Facebook Object Graph Image tags for hugo posts</a></li>
+</ul>
+</nav>
+</div>
+
+<section class="post-content">
+  
+
+<h1 id="hacking-in-facebook-object-graph-image-tags-for-hugo-posts">Hacking in Facebook Object Graph Image tags for hugo posts</h1>
+
+<p>Just detailing that as of <a href="https://github.com/arrjay/arrjay.github.io/commit/c3568fa29855a6e94c750cac4388fcd26d1b09f0">this commit</a> I added support for setting Facebook Object Graph preview-image settings in my Hugo templates. It was
+really to add in the front matter, actually, once I realized you can refer to <em>anything</em> in front matter under Params. The main tricky thing was FB wanted absolute URIs, so I had to use <code>absURL</code> (which I did, in the next commit).</p>
+
+<p>And for no good reason, a silly QR code!</p>
+
+<p><img src="/reference/seriously.png" alt="are you seriously reading this" title="are you seriously reading this" /></p>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2farrjay.github.io%2fposts%2fobjectgraph-tag-hack%2f&t=Objectgraph%20Tag%20Hack" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2farrjay.github.io%2fposts%2fobjectgraph-tag-hack%2f&text=Objectgraph%20Tag%20Hack&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=https%3a%2f%2farrjay.github.io%2fposts%2fobjectgraph-tag-hack%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=https%3a%2f%2farrjay.github.io%2fposts%2fobjectgraph-tag-hack%2f&title=Objectgraph%20Tag%20Hack" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:rbergero@gmail.com">RJ Bergeron</a>
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="https://arrjay.github.io//categories/software">"software"</a>
+      
+      <a href="https://arrjay.github.io//categories/blogging">"blogging"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="https://arrjay.github.io/tags/meta">"meta"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+
+<div class="post-comment">
+  
+</div>
+
+<div class="paging post-paging">
+  
+  
+  <a class="right" href="https://arrjay.github.io/posts/fontastic/" rel="next">
+    <span>customizing the linux console</span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </a>
+  
+</div>
+
+<footer class="footer">
+  Copyright (C) RJ Bergeron, All Rights Reserved.<br>
+  Theme by <a href="https://blog.lulab.net">DONGGEUN,BANG</a>
+</footer>
+
+</body>
+</html>
+
