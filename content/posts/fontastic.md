@@ -10,6 +10,7 @@ tags:
   - "screenshots"
   - "fonts"
   - "colors"
+ogimage: "/screenshots/f28-fantasque-sans-8x14.png"
 ---
 
 # Customizing the linux console
