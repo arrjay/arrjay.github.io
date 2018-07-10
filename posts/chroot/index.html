@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>The Foundation of Containerization - chroot  &middot; cloud daydreams</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://arrjay.github.io/posts/chroot/">
+  
+  
+  <meta property="og:image" content="https://arrjay.github.io/reference/folders.png">
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="/" class="logo-title">INDEX</a></li>
+      <li><a href="/categories">CATEGORIES</a></li>
+      <li><a href="/tags">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="/">
+        <img src="/images/logo.png" width="260px" height="48px" />
+      </a>
+    </div>
+
+
+<a href="https://arrjay.github.io/posts/chroot/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>09 Jul 2018, 16:56</time>
+      <h1>The Foundation of Containerization - chroot</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#the-foundation-of-containerization-chroot">The foundation of containerization - chroot</a>
+<ul>
+<li><a href="#why">Why</a></li>
+<li><a href="#what-chroot-is-not">What chroot is Not</a></li>
+<li><a href="#history">History</a></li>
+<li><a href="#creating-a-chroot">Creating a chroot</a>
+<ul>
+<li><a href="#cloning-the-running-system">Cloning the running system</a></li>
+<li><a href="#using-a-bootstrap-program">Using a bootstrap program</a>
+<ul>
+<li><a href="#debootstrap">debootstrap</a></li>
+<li><a href="#yum-dnf">yum/dnf</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+
+<section class="post-content">
+  
+
+<h1 id="the-foundation-of-containerization-chroot">The foundation of containerization - chroot</h1>
+
+<p>There is a lot of current popularity around the concept of linux containers, and here I wanted to detail one of the underpinnings - the chroot
+syscall.</p>
+
+<h2 id="why">Why</h2>
+
+<p>Linux containers are not some mythical black box - they are a collection of files, combined with startup mechanics to perform an isolated task.
+The chroot system is very much the foundation of this by allowing a program (and any programs it starts) to have a different concept of a base
+filesystem. This means you can take many linux programs and any dependencies they have, transport them to another directory, and be able to
+run them as if it was a different linux system. Understanding how to create and maintain chroots is an excellent first step to working with
+more complex docker images.</p>
+
+<h2 id="what-chroot-is-not">What chroot is Not</h2>
+
+<p>The chroot call is <em>not</em> a full virtualization solution - the system is still running the main kernel, just with a different filesystem view.
+With more modern kernels, the ABI has largely stabilized, but it is good to be aware of cases where a program may expect specific kernel
+features or configuration.</p>
+
+<p>Relatedly, a chroot system is not an emulator - it presents the same processor type and capabilities as the host system.</p>
+
+<p>Chroot typically only switches the base filesystem layers - processes in a chroot can typically still see other processes on the system
+(though not meaningfully interact with them), network connectivity is shared with the host.</p>
+
+<p>Typical chroots do <em>not</em> have the wiring together to use an init system in the chroot. Notably, systemd does not operate <em>inside</em> a chroot,
+<a href="http://0pointer.de/blog/projects/changing-roots">this document</a> lays out the ways for systemd to interact with chroots pretty well.</p>
+
+<p>Lastly, <code>chroot</code> is not generally user-accessible, you will need to be <code>root</code> on your system to do most chroot switching or creating tasks.
+If users are defined, they can be switched to <em>after</em> the chroot switch itself.</p>
+
+<h2 id="history">History</h2>
+
+<p>Via <a href="https://en.wikipedia.org/wiki/Chroot">wikipedia</a> - the chroot call actually predates Linux, it has been used for some time to test new
+system installations. Interest in it as a security apex dates to 1991 or so, and some programs have been specifically written to use it as
+a component isolation mechanism. A notable example is <a href="https://github.com/openssh/openssh-portable/blob/master/README.privsep">sshd</a>.</p>
+
+<h2 id="creating-a-chroot">Creating a chroot</h2>
+
+<p>For programs that are not explicitly designed to run in a chroot, there is a need to bring enough of an environment for them to run in.
+This can include devices, libraries, and runtime filesystems. Due to the flexibility of the system, there is no one-size-fits all, or
+even standardized solution.</p>
+
+<h3 id="cloning-the-running-system">Cloning the running system</h3>
+
+<p>If you have the disk space, a simple way to create a new chroot environment is clone your existing system. Using <code>tar</code> is a straightforward way
+to accomplish this. I sever <code>--exclude</code> arguments here, the first, <code>/chroot</code> prevents a copy loop (since <code>/chroot</code> is our destination) and the
+other two prevent some errors when trying to copy socket files, which this system is using in those locations.</p>
+
+<p>I use the stat command in the host to get the <a href="https://en.wikipedia.org/wiki/Inode">inode</a> or file number of the <code>/</code> and <code>/chroot</code> directories.
+Next, I switch in to the chroot, and run <code>stat</code> there to get the inode for the chrooted <code>/</code>. Note that it is the same number as <code>/chroot</code> in the
+host.</p>
+
+<pre><code># df -h /
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/fedora-root   15G  2.0G   14G  13% /
+# pwd
+/
+# stat -c %i /
+96
+# mkdir /chroot
+# stat -c %i /chroot
+25374620
+# tar cpf - --exclude /chroot \
+  --exclude /var/lib/sss/pipes --exclude /var/lib/gssproxy/default.sock \
+  --one-file-system / | tar xpf - -C /chroot
+tar: Removing leading `/' from member names
+tar: Removing leading `/' from hard link targets
+# chroot /chroot
+# pwd
+/
+# stat -c %i /
+25374620
+</code></pre>
+
+<h3 id="using-a-bootstrap-program">Using a bootstrap program</h3>
+
+<p>While cloning your existing system, then modifying that is a possible chroot strategy, a more popular one is to use a set of programs to
+build a new system in the chroot using minimal components from the host. Then, once there is an initial bootstrap, to switch in to the
+chroot and customize things further from there. This allows for building environments tailored to a single program, or trying out parts
+of a new linux system before making it your main operating environment. This is especially handy if you are looking at major system library
+changes, since the only stable ABI the chroot needs is that of the linux kernel.</p>
+
+<h4 id="debootstrap">debootstrap</h4>
+
+<p>Debian and derivatives have tooling specifically for this, called <a href="https://wiki.debian.org/Debootstrap">debootstrap</a>. This tool will pull
+packages from the debian archives and extract them to your new chroot. After initialization, you can jump right in and start working with
+apt and such, just like a normal system.</p>
+
+<pre><code># lsb_release -a
+LSB Version:	:core-4.1-amd64:core-4.1-noarch
+Distributor ID:	Fedora
+Description:	Fedora release 28 (Twenty Eight)
+Release:	28
+Codename:	TwentyEight
+# mkdir /chroot
+# debootstrap bionic /chroot
+[...a lot of progress and informational messages later...]
+# chroot /chroot
+# lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 18.04 LTS
+Release:	18.04
+Codename:	bionic
+# 
+</code></pre>
+
+<h4 id="yum-dnf">yum/dnf</h4>
+
+<p>For systems using <code>rpm</code> style package management, the situation is a little trickier - they use a binary package database, that is not
+guaranteed portable across versions - <em>especially</em> not backwards compatible. Let&rsquo;s detail the simple case - same major versions - here.</p>
+
+<pre><code># rpm -qa | wc -l
+665
+# mkdir /chroot
+# rpm --root /chroot --initdb
+# rpm --root /chroot -i \
+    https://mirrors.kernel.org/fedora/releases/28/Everything/x86_64/os/Packages/f/fedora-release-28-1.noarch.rpm \
+    https://mirrors.kernel.org/fedora/releases/28/Everything/x86_64/os/Packages/f/fedora-gpg-keys-28-1.noarch.rpm \
+    https://mirrors.kernel.org/fedora/releases/28/Everything/x86_64/os/Packages/f/fedora-repos-28-1.noarch.rpm
+warning: /chroot/var/tmp/rpm-tmp.WKYcr3: Header V3 RSA/SHA256 Signature, key ID 9db62fb1: NOKEY
+# dnf --installroot=/chroot install -y &quot;@Minimal Install&quot; dnf fedora-release fedora-release-notes fedora-gpg-keys
+# chroot /chroot
+# rpm -qa | wc -l
+287
+</code></pre>
+
+<p>I&rsquo;m not going to detail the cross-release details needed for <code>rpm</code> chroots here, but the short of it is you need to use the
+<code>rpmdb_dump</code> and <code>rpmdb_load</code> utilities to get the rpm database into a transportable format.</p>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2farrjay.github.io%2fposts%2fchroot%2f&t=The%20Foundation%20of%20Containerization%20-%20chroot" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2farrjay.github.io%2fposts%2fchroot%2f&text=The%20Foundation%20of%20Containerization%20-%20chroot&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=https%3a%2f%2farrjay.github.io%2fposts%2fchroot%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=https%3a%2f%2farrjay.github.io%2fposts%2fchroot%2f&title=The%20Foundation%20of%20Containerization%20-%20chroot" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:rbergero@gmail.com">RJ Bergeron</a>
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="https://arrjay.github.io//categories/linux">"linux"</a>
+      
+      <a href="https://arrjay.github.io//categories/nix">"nix"</a>
+      
+      <a href="https://arrjay.github.io//categories/software">"software"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="https://arrjay.github.io/tags/howto">"howto"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+
+<div class="post-comment">
+  
+</div>
+
+<div class="paging post-paging">
+  
+  
+  <a class="right" href="https://arrjay.github.io/posts/objectgraph-tag-hack/" rel="next">
+    <span>Objectgraph Tag Hack</span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </a>
+  
+</div>
+
+<footer class="footer">
+  Copyright (C) RJ Bergeron, All Rights Reserved.<br>
+  Theme by <a href="https://blog.lulab.net">DONGGEUN,BANG</a>
+</footer>
+
+</body>
+</html>
+

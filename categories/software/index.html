@@ -36,6 +36,24 @@
 
 
 
+  <a href="https://arrjay.github.io/posts/chroot/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>09 Jul 2018, 16:56</time>
+      <h1>The Foundation of Containerization - chroot</h1>
+    </div>
+  </div>
+</a>
+<div class="summary-content">
+  The foundation of containerization - chroot There is a lot of current popularity around the concept of linux containers, and here I wanted to detail one of the underpinnings - the chroot syscall.
+Why Linux containers are not some mythical black box - they are a collection of files, combined with startup mechanics to perform an isolated task. The chroot system is very much the foundation of this by allowing a program (and any programs it starts) to have a different concept of a base filesystem.
+  
+  <a href="/posts/chroot/" class="summary-more">READ MORE</a>
+  
+</div>
+  <hr class="summary-sep" />
+
   <a href="https://arrjay.github.io/posts/objectgraph-tag-hack/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
@@ -49,25 +67,6 @@
   Hacking in Facebook Object Graph Image tags for hugo posts Just detailing that as of this commit I added support for setting Facebook Object Graph preview-image settings in my Hugo templates. It was really to add in the front matter, actually, once I realized you can refer to anything in front matter under Params. The main tricky thing was FB wanted absolute URIs, so I had to use absURL (which I did, in the next commit).
   
   <a href="/posts/objectgraph-tag-hack/" class="summary-more">READ MORE</a>
-  
-</div>
-  <hr class="summary-sep" />
-
-  <a href="https://arrjay.github.io/posts/environment/">
-  <div class="post-title">
-    <img src="/images/post-title-icon.png" />
-    <div class="post-meta">
-      <time>23 Jun 2018, 00:18</time>
-      <h1>Environment Variables Rule Everything Around You</h1>
-    </div>
-  </div>
-</a>
-<div class="summary-content">
-  There&rsquo;s lots of discussion for operating systems about processes, ipc, files and such, I wanted to take a moment and touch on some internals I find incredibly useful in my day to day work. Environment variables!
-NOTE: I&rsquo;m really only covering Linux/OS X/POSIX class systems here, Windows (and PowerShell) have some slightly different edges.
-What Via Wikipedia - an environment variable is &ldquo;a dynamic-named value that can affect the way running processes will behave on a computer.
-  
-  <a href="/posts/environment/" class="summary-more">READ MORE</a>
   
 </div>
   <hr class="summary-sep" />

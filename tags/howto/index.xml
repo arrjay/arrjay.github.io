@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
     <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
-    <lastBuildDate>Sun, 08 Jul 2018 15:09:08 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 09 Jul 2018 16:56:30 +0000</lastBuildDate>
     
 	<atom:link href="https://arrjay.github.io/tags/howto/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Foundation of Containerization - chroot</title>
+      <link>https://arrjay.github.io/posts/chroot/</link>
+      <pubDate>Mon, 09 Jul 2018 16:56:30 +0000</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/chroot/</guid>
+      <description>The foundation of containerization - chroot There is a lot of current popularity around the concept of linux containers, and here I wanted to detail one of the underpinnings - the chroot syscall.
+Why Linux containers are not some mythical black box - they are a collection of files, combined with startup mechanics to perform an isolated task. The chroot system is very much the foundation of this by allowing a program (and any programs it starts) to have a different concept of a base filesystem.</description>
+    </item>
     
     <item>
       <title>customizing the linux console</title>

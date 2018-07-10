@@ -36,6 +36,25 @@
 
 
 
+  <a href="https://arrjay.github.io/posts/copper/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>10 Jul 2014, 23:31</time>
+      <h1>Copper (Darwin 8.0.1)</h1>
+    </div>
+  </div>
+</a>
+<div class="summary-content">
+  Installing Darwin 8.0.1 as a VM Copper is an installation of Darwin 8.0.1. Installing Darwin is&hellip;finicky.
+Avoid installing to ufs, that seems to work very poorly.
+ESXi configuration  Virtual Machine - version 8 Hardware Hard disk 1 should be attached to IDE bus (0:0) 768MB of RAM seems to be plenty. E1000 ethernet adapter works here as well. For Guest OS I selected Other (FreeBSD (32-bit)) Once up and running, you probably want to tweak settings to always boot from CD first - simply disconnect from image when we&rsquo;re done.
+  
+  <a href="/posts/copper/" class="summary-more">READ MORE</a>
+  
+</div>
+  <hr class="summary-sep" />
+
   <a href="https://arrjay.github.io/posts/ibm-7043-140/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
@@ -55,24 +74,6 @@ If booting from serial port (9600 8n1), system will begin firmware init by writi
 </div>
   <hr class="summary-sep" />
 
-  <a href="https://arrjay.github.io/posts/alphapc/">
-  <div class="post-title">
-    <img src="/images/post-title-icon.png" />
-    <div class="post-meta">
-      <time>28 Apr 2014, 01:34</time>
-      <h1>AlphaPC 164 LX</h1>
-    </div>
-  </div>
-</a>
-<div class="summary-content">
-  Firmware on the AlphaPC 164 LX This machine can only hold alphabios or SRM in flash memory. This means you cannot flip from booting NT to booting OSS things without reflashing the machine.
-To flash from alphabios to SRM:  In the backend, get &lsquo;lx164nt.rom&rsquo; to actually be the SRM firmware image. If using my puppet mess, netboot::flag::alphapc_164lx_defaultfw: &lsquo;srm&rsquo; should do what you want. Press F2 during boot to enter setup Choose &ldquo;AlphaBIOS Upgrade&hellip;&rdquo; from the menu.
-  
-  <a href="/posts/alphapc/" class="summary-more">READ MORE</a>
-  
-</div>
-  <hr class="summary-sep" />
-
 
 <div class="paging">
   
@@ -80,7 +81,7 @@ To flash from alphabios to SRM:  In the backend, get &lsquo;lx164nt.rom&rsquo; t
     <i class="fa fa-caret-left" aria-hidden="true"></i>
   </a>
   
-  PAGE 2 / 3
+  PAGE 2 / 4
   
   <a href="/tags/howto/page/3/" rel="next">
     <i class="fa fa-caret-right" aria-hidden="true"></i>
