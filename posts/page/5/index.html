@@ -36,6 +36,25 @@
 
 
 
+  <a href="https://arrjay.github.io/posts/ibm-7043-140/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>04 Jul 2014, 18:01</time>
+      <h1>IBM 7043 140 (43p)</h1>
+    </div>
+  </div>
+</a>
+<div class="summary-content">
+  Booting misc things on the IBM 7043-140 This machine is also known as the rs/6000 43p model 140, and finding documentation on it is scarce at best.
+Firmware Access Firmware can take it&rsquo;s time to gather clues and actually start an interface.
+If booting from serial port (9600 8n1), system will begin firmware init by writing a series of &ldquo;RS/6000&rdquo;, then &lsquo;memory&rsquo;, &lsquo;keyboard&rsquo;, &lsquo;network&rsquo;, &lsquo;scsi&rsquo;, &lsquo;speaker&rsquo;. There are several keys you can press to enter diagnostic utilities immediately after &lsquo;keyboard&rsquo; displays.
+  
+  <a href="/posts/ibm-7043-140/" class="summary-more">READ MORE</a>
+  
+</div>
+  <hr class="summary-sep" />
+
   <a href="https://arrjay.github.io/posts/alphapc/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
@@ -50,25 +69,6 @@
 To flash from alphabios to SRM:  In the backend, get &lsquo;lx164nt.rom&rsquo; to actually be the SRM firmware image. If using my puppet mess, netboot::flag::alphapc_164lx_defaultfw: &lsquo;srm&rsquo; should do what you want. Press F2 during boot to enter setup Choose &ldquo;AlphaBIOS Upgrade&hellip;&rdquo; from the menu.
   
   <a href="/posts/alphapc/" class="summary-more">READ MORE</a>
-  
-</div>
-  <hr class="summary-sep" />
-
-  <a href="https://arrjay.github.io/posts/tiny-solaris/">
-  <div class="post-title">
-    <img src="/images/post-title-icon.png" />
-    <div class="post-meta">
-      <time>07 Apr 2014, 00:54</time>
-      <h1>Installing Solaris 8 on a tiny machine (sparcstation LX)</h1>
-    </div>
-  </div>
-</a>
-<div class="summary-content">
-  If the installer drops to a # prompt complaining about bpgetfile - don&rsquo;t worry, just type exit - you&rsquo;re doing an interactive install anyway.
-At some point the installer will look at the amount of RAM in the box (64MB baby!) and stop. So we need to configure a disk, and swap now, then continue the installation.
- run &lsquo;format&rsquo; to see the disks attached to the machine - you probably want disk 0, type 0 at the prompt.
-  
-  <a href="/posts/tiny-solaris/" class="summary-more">READ MORE</a>
   
 </div>
   <hr class="summary-sep" />

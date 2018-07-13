@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>rbergero@gmail.com (RJ Bergeron)</managingEditor>
     <webMaster>rbergero@gmail.com (RJ Bergeron)</webMaster>
-    <lastBuildDate>Mon, 09 Jul 2018 16:56:30 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Jul 2018 15:47:58 +0000</lastBuildDate>
     
 	<atom:link href="https://arrjay.github.io/categories/nix/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Environment Variables as a Program Bootstrap</title>
+      <link>https://arrjay.github.io/posts/env-eval/</link>
+      <pubDate>Fri, 13 Jul 2018 15:47:58 +0000</pubDate>
+      <author>rbergero@gmail.com (RJ Bergeron)</author>
+      <guid>https://arrjay.github.io/posts/env-eval/</guid>
+      <description>Environment Variables as a Program Bootstrap Previously, I talked about environment variables relating to system level environment variables. This article expands on that with an examples of a program that uses your environment to flexibly communitacte between components, demonstrating ways to effectively use those.
+An example with ssh-agent Using ssh-agent is a way to improve the usability of encrypted ssh keys - that is, you can have keys stored encrypted on disk, and the agent program will manage loading and unlocking keys for you.</description>
+    </item>
     
     <item>
       <title>The Foundation of Containerization - chroot</title>

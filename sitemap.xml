@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://arrjay.github.io/posts/env-eval/</loc>
+    <lastmod>2018-07-13T15:47:58+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://arrjay.github.io/posts/chroot/</loc>
     <lastmod>2018-07-09T16:56:30+00:00</lastmod>
   </url>
@@ -65,7 +70,7 @@
   
   <url>
     <loc>https://arrjay.github.io/tags/bash/</loc>
-    <lastmod>2018-06-23T00:18:42-04:00</lastmod>
+    <lastmod>2018-07-13T15:47:58+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -161,7 +166,7 @@
   
   <url>
     <loc>https://arrjay.github.io/categories/nix/</loc>
-    <lastmod>2018-07-09T16:56:30+00:00</lastmod>
+    <lastmod>2018-07-13T15:47:58+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -173,7 +178,7 @@
   
   <url>
     <loc>https://arrjay.github.io/posts/</loc>
-    <lastmod>2018-07-09T16:56:30+00:00</lastmod>
+    <lastmod>2018-07-13T15:47:58+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -191,7 +196,7 @@
   
   <url>
     <loc>https://arrjay.github.io/categories/software/</loc>
-    <lastmod>2018-07-09T16:56:30+00:00</lastmod>
+    <lastmod>2018-07-13T15:47:58+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -208,6 +213,12 @@
   </url>
   
   <url>
+    <loc>https://arrjay.github.io/tags/ssh/</loc>
+    <lastmod>2018-07-13T15:47:58+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://arrjay.github.io/tags/story/</loc>
     <lastmod>2018-07-01T16:13:21+00:00</lastmod>
     <priority>0</priority>
@@ -215,7 +226,7 @@
   
   <url>
     <loc>https://arrjay.github.io/tags/</loc>
-    <lastmod>2018-06-23T00:18:42-04:00</lastmod>
+    <lastmod>2018-07-13T15:47:58+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -233,7 +244,7 @@
   
   <url>
     <loc>https://arrjay.github.io/</loc>
-    <lastmod>2018-07-09T16:56:30+00:00</lastmod>
+    <lastmod>2018-07-13T15:47:58+00:00</lastmod>
     <priority>0</priority>
   </url>
   
