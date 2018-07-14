@@ -7,6 +7,7 @@ categories:
 tags:
  - "bash"
  - "ssh"
+ogimage: "/reference/bash-128x128.png"
 ---
 # Environment Variables as a Program Bootstrap
 
