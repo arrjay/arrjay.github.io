@@ -2,7 +2,7 @@ baseURL = "https://arrjay.github.io/"
 languageCode = "en-us"
 title = "cloud daydreams"
 theme = "hello-programmer"
-paginate = 2
+paginate = 4
 
 [author]
     name = "RJ Bergeron"
