@@ -36,39 +36,19 @@
 
 
 
-  <a href="https://arrjay.github.io/posts/alphapc/">
+  <a href="https://arrjay.github.io/posts/irix62-install/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
     <div class="post-meta">
-      <time>28 Apr 2014, 01:34</time>
-      <h1>AlphaPC 164 LX</h1>
+      <time>07 Apr 2014, 00:53</time>
+      <h1>IRIX 6.2 Installation and patching</h1>
     </div>
   </div>
 </a>
 <div class="summary-content">
-  Firmware on the AlphaPC 164 LX This machine can only hold alphabios or SRM in flash memory. This means you cannot flip from booting NT to booting OSS things without reflashing the machine.
-To flash from alphabios to SRM:  In the backend, get &lsquo;lx164nt.rom&rsquo; to actually be the SRM firmware image. If using my puppet mess, netboot::flag::alphapc_164lx_defaultfw: &lsquo;srm&rsquo; should do what you want. Press F2 during boot to enter setup Choose &ldquo;AlphaBIOS Upgrade&hellip;&rdquo; from the menu.
+  do the install, reboot  install default is the magic for inst selection.  DHCP will give you back an address, but you need to configure DNS. routed(!) will hand you a default route.  echo 'nameserver 10.100.252.2' &gt; /etc/resolv.conf echo 'domain j.hack' &gt;&gt; /etc/resolv.conf echo 'hostname' &gt; /etc/sys_id cat /etc/hosts|sed s/IRIS/xxxHOSTNAMExxx/g &gt; /etc/hosts.1 mv /etc/hosts.1 /etc/hosts   you can verify with ping - there is no host or getent here!
   
-  <a href="/posts/alphapc/" class="summary-more">READ MORE</a>
-  
-</div>
-  <hr class="summary-sep" />
-
-  <a href="https://arrjay.github.io/posts/tiny-solaris/">
-  <div class="post-title">
-    <img src="/images/post-title-icon.png" />
-    <div class="post-meta">
-      <time>07 Apr 2014, 00:54</time>
-      <h1>Installing Solaris 8 on a tiny machine (sparcstation LX)</h1>
-    </div>
-  </div>
-</a>
-<div class="summary-content">
-  If the installer drops to a # prompt complaining about bpgetfile - don&rsquo;t worry, just type exit - you&rsquo;re doing an interactive install anyway.
-At some point the installer will look at the amount of RAM in the box (64MB baby!) and stop. So we need to configure a disk, and swap now, then continue the installation.
- run &lsquo;format&rsquo; to see the disks attached to the machine - you probably want disk 0, type 0 at the prompt.
-  
-  <a href="/posts/tiny-solaris/" class="summary-more">READ MORE</a>
+  <a href="/posts/irix62-install/" class="summary-more">READ MORE</a>
   
 </div>
   <hr class="summary-sep" />
@@ -80,11 +60,7 @@ At some point the installer will look at the amount of RAM in the box (64MB baby
     <i class="fa fa-caret-left" aria-hidden="true"></i>
   </a>
   
-  PAGE 2 / 3
-  
-  <a href="/categories/crazyoldthings/page/3/" rel="next">
-    <i class="fa fa-caret-right" aria-hidden="true"></i>
-  </a>
+  PAGE 2 / 2
   
 </div>
 

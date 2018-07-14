@@ -37,37 +37,76 @@
 
 
 
-  <a href="https://arrjay.github.io/posts/objectgraph-tag-hack/">
+  <a href="https://arrjay.github.io/posts/narrative/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
     <div class="post-meta">
-      <time>09 Jul 2018, 02:58</time>
-      <h1>Objectgraph Tag Hack</h1>
+      <time>01 Jul 2018, 16:13</time>
+      <h1>Narrative - The Cloud and making it yours</h1>
     </div>
   </div>
 </a>
 <div class="summary-content">
-  Hacking in Facebook Object Graph Image tags for hugo posts Just detailing that as of this commit I added support for setting Facebook Object Graph preview-image settings in my Hugo templates. It was really to add in the front matter, actually, once I realized you can refer to anything in front matter under Params. The main tricky thing was FB wanted absolute URIs, so I had to use absURL (which I did, in the next commit).
+  Some criticism I received about my earlier article on environment variables highlighted a really big deficiency! I provided a large chunk of technical detail and explanations without a larger narrative. So in this post, I&rsquo;d like to detail a few the reasons to be interested.
+Appreciating the magic As popular as it may be, &ldquo;the cloud&rdquo; is very much a declaration of abstraction - you don&rsquo;t need to /usually/ worry about it, until you do.
   
-  <a href="/posts/objectgraph-tag-hack/" class="summary-more">READ MORE</a>
+  <a href="/posts/narrative/" class="summary-more">READ MORE</a>
   
 </div>
   <hr class="summary-sep" />
 
-  <a href="https://arrjay.github.io/posts/fontastic/">
+  <a href="https://arrjay.github.io/posts/environment/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
     <div class="post-meta">
-      <time>08 Jul 2018, 15:09</time>
-      <h1>customizing the linux console</h1>
+      <time>23 Jun 2018, 00:18</time>
+      <h1>Environment Variables Rule Everything Around You</h1>
     </div>
   </div>
 </a>
 <div class="summary-content">
-  Customizing the linux console If you have a little linux server, you don&rsquo;t need to go the full X11 route just to have a better time when you need to directly administer it. You can directly customize the console!
-Fonts The console here doesn&rsquo;t have niceties like an font renderer, and that&rsquo;s arguably a good thing - so we use bitmap fonts - the PSF format, described here. Searching for &ldquo;psf fonts&rdquo; returns slighty more useful results than &ldquo;linux console font&rdquo;.
+  There&rsquo;s lots of discussion for operating systems about processes, ipc, files and such, I wanted to take a moment and touch on some internals I find incredibly useful in my day to day work. Environment variables!
+NOTE: I&rsquo;m really only covering Linux/OS X/POSIX class systems here, Windows (and PowerShell) have some slightly different edges.
+What Via Wikipedia - an environment variable is &ldquo;a dynamic-named value that can affect the way running processes will behave on a computer.
   
-  <a href="/posts/fontastic/" class="summary-more">READ MORE</a>
+  <a href="/posts/environment/" class="summary-more">READ MORE</a>
+  
+</div>
+  <hr class="summary-sep" />
+
+  <a href="https://arrjay.github.io/posts/hugo/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>22 Jun 2018, 14:56</time>
+      <h1>Why I chose Hugo for setting up this blog</h1>
+    </div>
+  </div>
+</a>
+<div class="summary-content">
+  So this site is set up using Hugo and I figure I&rsquo;d detail a little bit of why.
+Static generator with a live updater One of the easier ways to do hosting is to have a simple collection of files to upload to a webserver, rather than building a server environment to run a blog engine. This also gives you the capability to more easily move your site between providers.
+  
+  <a href="/posts/hugo/" class="summary-more">READ MORE</a>
+  
+</div>
+  <hr class="summary-sep" />
+
+  <a href="https://arrjay.github.io/posts/copper/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>10 Jul 2014, 23:31</time>
+      <h1>Copper (Darwin 8.0.1)</h1>
+    </div>
+  </div>
+</a>
+<div class="summary-content">
+  Installing Darwin 8.0.1 as a VM Copper is an installation of Darwin 8.0.1. Installing Darwin is&hellip;finicky.
+Avoid installing to ufs, that seems to work very poorly.
+ESXi configuration  Virtual Machine - version 8 Hardware Hard disk 1 should be attached to IDE bus (0:0) 768MB of RAM seems to be plenty. E1000 ethernet adapter works here as well. For Guest OS I selected Other (FreeBSD (32-bit)) Once up and running, you probably want to tweak settings to always boot from CD first - simply disconnect from image when we&rsquo;re done.
+  
+  <a href="/posts/copper/" class="summary-more">READ MORE</a>
   
 </div>
   <hr class="summary-sep" />
@@ -79,7 +118,7 @@ Fonts The console here doesn&rsquo;t have niceties like an font renderer, and th
     <i class="fa fa-caret-left" aria-hidden="true"></i>
   </a>
   
-  PAGE 2 / 6
+  PAGE 2 / 3
   
   <a href="/page/3/" rel="next">
     <i class="fa fa-caret-right" aria-hidden="true"></i>

@@ -36,39 +36,75 @@
 
 
 
-  <a href="https://arrjay.github.io/posts/narrative/">
+  <a href="https://arrjay.github.io/posts/ibm-7043-140/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
     <div class="post-meta">
-      <time>01 Jul 2018, 16:13</time>
-      <h1>Narrative - The Cloud and making it yours</h1>
+      <time>04 Jul 2014, 18:01</time>
+      <h1>IBM 7043 140 (43p)</h1>
     </div>
   </div>
 </a>
 <div class="summary-content">
-  Some criticism I received about my earlier article on environment variables highlighted a really big deficiency! I provided a large chunk of technical detail and explanations without a larger narrative. So in this post, I&rsquo;d like to detail a few the reasons to be interested.
-Appreciating the magic As popular as it may be, &ldquo;the cloud&rdquo; is very much a declaration of abstraction - you don&rsquo;t need to /usually/ worry about it, until you do.
+  Booting misc things on the IBM 7043-140 This machine is also known as the rs/6000 43p model 140, and finding documentation on it is scarce at best.
+Firmware Access Firmware can take it&rsquo;s time to gather clues and actually start an interface.
+If booting from serial port (9600 8n1), system will begin firmware init by writing a series of &ldquo;RS/6000&rdquo;, then &lsquo;memory&rsquo;, &lsquo;keyboard&rsquo;, &lsquo;network&rsquo;, &lsquo;scsi&rsquo;, &lsquo;speaker&rsquo;. There are several keys you can press to enter diagnostic utilities immediately after &lsquo;keyboard&rsquo; displays.
   
-  <a href="/posts/narrative/" class="summary-more">READ MORE</a>
+  <a href="/posts/ibm-7043-140/" class="summary-more">READ MORE</a>
   
 </div>
   <hr class="summary-sep" />
 
-  <a href="https://arrjay.github.io/posts/environment/">
+  <a href="https://arrjay.github.io/posts/alphapc/">
   <div class="post-title">
     <img src="/images/post-title-icon.png" />
     <div class="post-meta">
-      <time>23 Jun 2018, 00:18</time>
-      <h1>Environment Variables Rule Everything Around You</h1>
+      <time>28 Apr 2014, 01:34</time>
+      <h1>AlphaPC 164 LX</h1>
     </div>
   </div>
 </a>
 <div class="summary-content">
-  There&rsquo;s lots of discussion for operating systems about processes, ipc, files and such, I wanted to take a moment and touch on some internals I find incredibly useful in my day to day work. Environment variables!
-NOTE: I&rsquo;m really only covering Linux/OS X/POSIX class systems here, Windows (and PowerShell) have some slightly different edges.
-What Via Wikipedia - an environment variable is &ldquo;a dynamic-named value that can affect the way running processes will behave on a computer.
+  Firmware on the AlphaPC 164 LX This machine can only hold alphabios or SRM in flash memory. This means you cannot flip from booting NT to booting OSS things without reflashing the machine.
+To flash from alphabios to SRM:  In the backend, get &lsquo;lx164nt.rom&rsquo; to actually be the SRM firmware image. If using my puppet mess, netboot::flag::alphapc_164lx_defaultfw: &lsquo;srm&rsquo; should do what you want. Press F2 during boot to enter setup Choose &ldquo;AlphaBIOS Upgrade&hellip;&rdquo; from the menu.
   
-  <a href="/posts/environment/" class="summary-more">READ MORE</a>
+  <a href="/posts/alphapc/" class="summary-more">READ MORE</a>
+  
+</div>
+  <hr class="summary-sep" />
+
+  <a href="https://arrjay.github.io/posts/tiny-solaris/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>07 Apr 2014, 00:54</time>
+      <h1>Installing Solaris 8 on a tiny machine (sparcstation LX)</h1>
+    </div>
+  </div>
+</a>
+<div class="summary-content">
+  If the installer drops to a # prompt complaining about bpgetfile - don&rsquo;t worry, just type exit - you&rsquo;re doing an interactive install anyway.
+At some point the installer will look at the amount of RAM in the box (64MB baby!) and stop. So we need to configure a disk, and swap now, then continue the installation.
+ run &lsquo;format&rsquo; to see the disks attached to the machine - you probably want disk 0, type 0 at the prompt.
+  
+  <a href="/posts/tiny-solaris/" class="summary-more">READ MORE</a>
+  
+</div>
+  <hr class="summary-sep" />
+
+  <a href="https://arrjay.github.io/posts/irix62-install/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>07 Apr 2014, 00:53</time>
+      <h1>IRIX 6.2 Installation and patching</h1>
+    </div>
+  </div>
+</a>
+<div class="summary-content">
+  do the install, reboot  install default is the magic for inst selection.  DHCP will give you back an address, but you need to configure DNS. routed(!) will hand you a default route.  echo 'nameserver 10.100.252.2' &gt; /etc/resolv.conf echo 'domain j.hack' &gt;&gt; /etc/resolv.conf echo 'hostname' &gt; /etc/sys_id cat /etc/hosts|sed s/IRIS/xxxHOSTNAMExxx/g &gt; /etc/hosts.1 mv /etc/hosts.1 /etc/hosts   you can verify with ping - there is no host or getent here!
+  
+  <a href="/posts/irix62-install/" class="summary-more">READ MORE</a>
   
 </div>
   <hr class="summary-sep" />
@@ -80,11 +116,7 @@ What Via Wikipedia - an environment variable is &ldquo;a dynamic-named value tha
     <i class="fa fa-caret-left" aria-hidden="true"></i>
   </a>
   
-  PAGE 3 / 6
-  
-  <a href="/posts/page/4/" rel="next">
-    <i class="fa fa-caret-right" aria-hidden="true"></i>
-  </a>
+  PAGE 3 / 3
   
 </div>
 
