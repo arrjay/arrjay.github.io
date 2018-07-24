@@ -6,8 +6,7 @@ variables:
 
 test:
   script:
-  - sed -i -e 's/github/gitlab/' config.toml
-  - hugo
+  - hugo -b "https://arrjay.gitlab.io/"
   except:
   - source
   - master
