@@ -1,4 +1,4 @@
-baseURL = "https://arrjay.github.io/"
+baseURL = "https://arrjay.gitlab.io/"
 languageCode = "en-us"
 title = "cloud daydreams"
 theme = "hello-programmer"

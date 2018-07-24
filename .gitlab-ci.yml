@@ -6,9 +6,8 @@ variables:
 
 test:
   script:
-  - hugo -b "https://arrjay.gitlab.io/"
+  - hugo
   except:
-  - source
   - master
 
 pages:
@@ -18,4 +17,4 @@ pages:
     paths:
     - public
   only:
-  - source
+  - gl-source
